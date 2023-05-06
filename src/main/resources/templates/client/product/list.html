@@ -128,7 +128,7 @@
                                         <div class="col-6 col-lg-3">
                                             <figure class="product-media">
                                                 <a href="product.html">
-                                                    <img src="assets/images/products/product-9.jpg" alt="Product image" class="product-image">
+                                                    <img th:src="@{|/assets/images/products/${p.image1}|}" alt="Product image" class="product-image">
                                                 </a>
                                             </figure><!-- End .product-media -->
                                         </div><!-- End .col-sm-6 col-lg-3 -->
@@ -136,7 +136,7 @@
                                         <div class="col-6 col-lg-3 order-lg-last">
                                             <div class="product-list-action">
                                                 <div class="product-price">
-                                                    $52.00
+                                                    [[*{#numbers.formatDecimal(p.price, 0, 'COMMA', 0, 'POINT')}]] VNĐ
                                                 </div><!-- End .product-price -->
                                                 <div class="ratings-container">
                                                     <div class="ratings">

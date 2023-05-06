@@ -50,18 +50,6 @@ create table Categories(
 
 go
 
-create table Subcategories(
-	Id varchar(20) not null,
-	Name nvarchar(40) not null,
-	Category_Id varchar(10) not null,
-	constraint FK_Subcategories_Categories
-	foreign key (Category_Id) references Categories (Id),
-	Icon varchar(40),
-	primary key (Id)
-)
-
-go
-
 create table Products(
 	Id int identity(1,1),
 	Name nvarchar(100) not null,
@@ -76,9 +64,6 @@ create table Products(
 	Category_Id varchar(10) not null,
 	constraint FK_Products_Categories
 	foreign key (Category_Id) references Categories(Id),
-	Subcategory_Id varchar(20) not null,
-	constraint FK_Products_Subcategories
-	foreign key (Subcategory_Id) references Subcategories(Id),
 	primary key (Id)
 )
 
@@ -136,19 +121,17 @@ insert into Users(username, password, email, fullname, address, phone, introduce
 	values('admin','admin','thienandeptrai@gmail.com',N'Trịnh Hữu Thiện Ân',null,null,null,1,'0123456789','0123456789','avatar1.png', 'ADMIN', null)
 	
 insert into Categories(id, name, icon)
-	values('JACKET',N'Áo khoác','jacket.png')
+	values('SHOES',N'Giày','jacket.png')
 
-insert into Subcategories(id,name,Category_Id,icon)
+/*insert into Subcategories(id,name,Category_Id,icon)
 	values
 		-- jacket
 		('JACKET1','Áo khoác nam','JACKET','jacket01.png'),
-		('JACKET2','Áo khoác nữ','JACKET','jacket02.png')
+		('JACKET2','Áo khoác nữ','JACKET','jacket02.png')*/
 
-insert into Products(name,Image1,Image2,Image3,Image4,price,description,stock,discount,category_id,subcategory_id)
+insert into Products(name,Image1,Image2,Image3,Image4,price,description,stock,discount,category_id)
 	values
-		(N'KALENJI Áo khoác chạy bộ chống gió Run Wind cho nam','UA55AU7700_1.jpg','UA55AU7700_2.jpg','UA55AU7700_3.jpg','UA55AU7700_4.jpg',18990000,N'Laptop gaming tốt nhất phân khúc',100,10,'JACKET','JACKET1'),
-		(N'KALENJI Áo khoác chạy bộ chống gió Run Wind cho nam 2','UA55AU7700_1.jpg','UA55AU7700_2.jpg','UA55AU7700_3.jpg','UA55AU7700_4.jpg',18990000,N'Laptop gaming tốt nhất phân khúc',100,10,'JACKET','JACKET1'),
-		(N'KALENJI Áo khoác chạy bộ chống gió Run Wind cho nam','UA55AU7700_1.jpg','UA55AU7700_2.jpg','UA55AU7700_3.jpg','UA55AU7700_4.jpg',18990000,N'Laptop gaming tốt nhất phân khúc',100,10,'JACKET','JACKET1')
+		(N'AIR FORCE 1','airforce1_1.jpg','airforce1_2.jpg','airforce1_3.jpg','airforce1_4.jpg',3300000,N'Laptop gaming tốt nhất phân khúc',100,10,'SHOES')
 
 
 

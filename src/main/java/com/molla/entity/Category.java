@@ -22,16 +22,12 @@ public class Category{
 	private String name;
 	private String icon;
 	
-	@JsonIgnore
-	@OneToMany(mappedBy = "category")
-	private List<Subcategory> subcategories;
+//	@JsonIgnore
+//	@OneToMany(mappedBy = "category")
+//	private List<Subcategory> subcategories;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy = "category")
 	private List<Product> products;
-	
-//	@JsonIgnore
-//	@OneToMany(mappedBy = "products")
-//	private List<OrderDetail> orderDetails;	
 	
 }

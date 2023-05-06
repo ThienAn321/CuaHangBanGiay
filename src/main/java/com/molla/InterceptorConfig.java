@@ -10,11 +10,11 @@ import com.molla.config.CategoryInterceptor;
 @Configuration
 public class InterceptorConfig implements WebMvcConfigurer{
 	@Autowired
-	CategoryInterceptor categooryInterceptor;
+	CategoryInterceptor categoryInterceptor;
 	
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
-		registry.addInterceptor(categooryInterceptor)
+		registry.addInterceptor(categoryInterceptor)
 				.addPathPatterns("/**")
 				.excludePathPatterns("/rest/**","/admin/**","/assets/**"); //loại trừ
 	}

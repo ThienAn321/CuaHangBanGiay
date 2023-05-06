@@ -40,10 +40,13 @@ public class Product {
 	@JoinColumn(name = "Category_Id")
 	private Category category;
 
-	@ManyToOne
-	@JoinColumn(name = "Subcategory_Id")
-	private Subcategory subcategory;
-
-
+//	@ManyToOne
+//	@JoinColumn(name = "Subcategory_Id")
+//	private Subcategory subcategory;
+//
+//
+	@JsonIgnore
+	@OneToMany(mappedBy = "products")
+	List<OrderDetail> orderDetail;	
 
 }
