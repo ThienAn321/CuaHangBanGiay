@@ -1,14 +1,14 @@
 ﻿use master
 go
 
-if exists(select * from sys.databases where name = 'CuaHangTheThao')
-	drop database CuaHangTheThao
+if exists(select * from sys.databases where name = 'CuaHangBanGiay')
+	drop database CuaHangBanGiay
 
-create database CuaHangTheThao
+create database CuaHangBanGiay
 
 go
 
-use CuaHangTheThao
+use CuaHangBanGiay
 
 go
 
@@ -57,6 +57,7 @@ create table Products(
 	Image2 varchar(50),
 	Image3 varchar(50),
 	Image4 varchar(50),
+	Size int not null,
 	Price decimal(12,2) not null,
 	Description nvarchar(500),
 	Stock int not null,
@@ -129,9 +130,9 @@ insert into Categories(id, name, icon)
 		('JACKET1','Áo khoác nam','JACKET','jacket01.png'),
 		('JACKET2','Áo khoác nữ','JACKET','jacket02.png')*/
 
-insert into Products(name,Image1,Image2,Image3,Image4,price,description,stock,discount,category_id)
+insert into Products(name,Image1,Image2,Image3,Image4, size, price,description,stock,discount,category_id)
 	values
-		(N'AIR FORCE 1','airforce1_1.jpg','airforce1_2.jpg','airforce1_3.jpg','airforce1_4.jpg',3300000,N'Laptop gaming tốt nhất phân khúc',100,10,'NIKE')
+		(N'AIR FORCE 1','airforce1_1.jpg','airforce1_2.jpg','airforce1_3.jpg','airforce1_4.jpg', 41, 3300000,N'Laptop gaming tốt nhất phân khúc',100,10,'NIKE')
 
 
 

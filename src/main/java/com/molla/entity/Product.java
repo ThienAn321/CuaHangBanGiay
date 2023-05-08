@@ -31,6 +31,7 @@ public class Product {
 	private String image2;
 	private String image3;
 	private String image4;
+	private Integer size;
 	private Double price;
 	private String description;
 	private Integer stock;
