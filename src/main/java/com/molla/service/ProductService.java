@@ -7,5 +7,7 @@ import com.molla.entity.Product;
 public interface ProductService {
 
 	List<Product> findAll();
+
+	Product findById(Integer id);
 	
 }

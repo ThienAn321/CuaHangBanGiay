@@ -121,7 +121,7 @@ insert into Users(username, password, email, fullname, address, phone, introduce
 	values('admin','admin','thienandeptrai@gmail.com',N'Trịnh Hữu Thiện Ân',null,null,null,1,'0123456789','0123456789','avatar1.png', 'ADMIN', null)
 	
 insert into Categories(id, name, icon)
-	values('SHOES',N'Giày','jacket.png')
+	values('NIKE',N'NIKE','jacket.png')
 
 /*insert into Subcategories(id,name,Category_Id,icon)
 	values
@@ -131,7 +131,7 @@ insert into Categories(id, name, icon)
 
 insert into Products(name,Image1,Image2,Image3,Image4,price,description,stock,discount,category_id)
 	values
-		(N'AIR FORCE 1','airforce1_1.jpg','airforce1_2.jpg','airforce1_3.jpg','airforce1_4.jpg',3300000,N'Laptop gaming tốt nhất phân khúc',100,10,'SHOES')
+		(N'AIR FORCE 1','airforce1_1.jpg','airforce1_2.jpg','airforce1_3.jpg','airforce1_4.jpg',3300000,N'Laptop gaming tốt nhất phân khúc',100,10,'NIKE')
 
 
 
