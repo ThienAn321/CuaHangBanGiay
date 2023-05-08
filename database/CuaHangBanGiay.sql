@@ -122,8 +122,12 @@ insert into Users(username, password, email, fullname, address, phone, introduce
 	values('admin','admin','thienandeptrai@gmail.com',N'Trịnh Hữu Thiện Ân',null,null,null,1,'0123456789','0123456789','avatar1.png', 'ADMIN', null)
 	
 insert into Categories(id, name, icon)
-	values('NIKE',N'NIKE','jacket.png')
-
+	values('NIKE',N'NIKE','jacket.png'),
+	values('ADIDAS',N'ADIDAS','jacket1.png'),
+	values('JORDAN',N'JORDAN','jacket2.png'),
+	values('YEEZY',N'YEEZY','jacket3.png'),
+	values('OTHER BRANDS',N'OTHER BRANDS','jacket4.png')
+	
 /*insert into Subcategories(id,name,Category_Id,icon)
 	values
 		-- jacket
@@ -132,7 +136,36 @@ insert into Categories(id, name, icon)
 
 insert into Products(name,Image1,Image2,Image3,Image4, size, price,description,stock,discount,category_id)
 	values
-		(N'AIR FORCE 1','airforce1_1.jpg','airforce1_2.jpg','airforce1_3.jpg','airforce1_4.jpg', 41, 3300000,N'Laptop gaming tốt nhất phân khúc',100,10,'NIKE')
+		(N'NIKE AIR FORCE 1','airforce1_1.jpg','airforce1_2.jpg','airforce1_3.jpg','airforce1_4.jpg', 41, 3300000,N'Laptop gaming tốt nhất phân khúc',100,10,'NIKE'),
+		(N'NIKE DOWNSHIFTER 12','nike_down2_1.jpg','nike_down2_2.jpg','nike_down2_3.jpg','nike_down2_4.jpg', 40, 2200000,N'Giày đẹp chất lượng cao',100,7,'NIKE'),
+		(N'NIKE PEGASUS 40','nike_pegasus3_1.jpg','nike_pegasus3_2.jpg','nike_pegasus3_3.jpg','nike_pegasus3_4.jpg', 41, 1900000,N'Giày Nike Pegasus đẹp chất lượng cao',100,8,'NIKE'),
+		(N'NIKE FORCE 1 SHADOW MULTICOLOR','nike_multicolor4_1.jpg','nike_multicolor4_2.jpg','nike_multicolor4_3.jpg','nike_pegasus3_4.jpg', 39, 3900000,N'Giày Nike Pegasus đẹp chất lượng cao',100,8,'NIKE'),
+		(N'NIKE AIR MAX EXCEE','nike_maxexcee5_1.jpg','nike_maxexcee5_2.jpg','nike_maxexcee5_3.jpg','nike_maxexcee5_4.jpg', 40, 3200000,N'Giày Nike Pegasus đẹp chất lượng cao',100,10,'NIKE'),
+		(N'ADIDAS FORUM LOW CL','adidas_low1_1.jpg','adidas_low1_2.jpg','adidas_low1_3.jpg','adidas_low1_4.jpg', 38, 3200000,N'Giày Nike Pegasus đẹp chất lượng cao',100,10,'ADIDAS'),
+		(N'ADIDAS ULTRA4D SUN DEVILS','adidas_sun2_1.jpg','adidas_sun2_2.jpg','adidas_sun2_3.jpg','adidas_sun2_4.jpg', 44, 4800000,N'Giày ADIDAS Pegasus đẹp chất lượng cao',100,8,'ADIDAS'),
+		(N'ADIDAS GRAND COURT','adidas_grand3_1.jpg','adidas_grand3_2.jpg','adidas_grand3_3.jpg','adidas_grand3_4.jpg', 40, 2300000,N'Giày ADIDAS Pegasus đẹp chất lượng cao',100,10,'ADIDAS'),
+		(N'ADIDAS NY90','adidas_ny4_1.jpg','adidas_ny4_2.jpg','adidas_ny4_3.jpg','adidas_ny4_4.jpg', 38, 1900000,N'Giày ADIDAS Pegasus đẹp chất lượng cao',100,8,'A DIDAS'),
+		(N'ADIDAS SAMBA CLASSIC','adidas_samba5_1.jpg','adidas_samba5_2.jpg','adidas_samba5_3.jpg','adidas_samba5_4.jpg', 40, 5800000,N'Giày ADIDAS Pegasus đẹp chất lượng cao',100,7,'ADIDAS'),
+		(N'JORDAN 1 MID SE','jordan_mid1_1.jpg','jordan_mid1_2.jpg','jordan_mid1_3.jpg','jordan_mid1_4.jpg', 41, 7300000,N'Giày JORDAN Pegasus đẹp chất lượng cao',100,10,'JORDAN'),
+		(N'JORDAN 1 LOW SE','jordan_low2_1.jpg','jordan_low2_2.jpg','jordan_low2_3.jpg','jordan_low2_4.jpg', 40, 4350000,N'Giày JORDAN Pegasus đẹp chất lượng cao',100,10,'JORDAN'),
+		(N'JORDAN 1 MID OBSIDIAN','jordan_ob3_1.jpg','jordan_ob3_2.jpg','jordan_ob3_3.jpg','jordan_ob3_4.jpg', 39, 5800000,N'Giày JORDAN Pegasus đẹp chất lượng cao',100,10,'JORDAN'),
+		(N'JORDAN AIR 200E','jordan_200E4_1.jpg','jordan_200E4_2.jpg','jordan_200E4_3.jpg','jordan_200E4_4.jpg', 44, 3900000,N'Giày JORDAN Pegasus đẹp chất lượng cao',100,10,'JORDAN'),
+		(N'JORDAN 1 MID CARBON FIBER','jordan_carbon5_1.jpg','jordan_carbon5_2.jpg','jordan_carbon5_3.jpg','jordan_carbon5_4.jpg', 42, 7200000,N'Giày JORDAN Pegasus đẹp chất lượng cao',100,10,'JORDAN'),
+		(N'YEEZY BOOST 350 V2 ONYX','yz1_1.jpg','yz1_2.jpg','yz1_3.jpg','yz1_4.jpg', 44, 14000000,N'Giày YEEZY Pegasus đẹp chất lượng cao',100,10,'YEEZY'),
+		(N'YEEZY BOOST 350 V2 BONE','yz2_1.jpg','yz2_2.jpg','yz2_3.jpg','yz2_4.jpg', 42, 11000000,N'Giày YEEZY Pegasus đẹp chất lượng cao',100,8,'YEEZY'),
+		(N'YEEZY BOOST 350 V2','yz3_1.jpg','yz3_2.jpg','yz3_3.jpg','yz3_4.jpg', 43, 8500000,N'Giày YEEZY Pegasus đẹp chất lượng cao',100,10,'YEEZY'),
+		(N'YEEZY BOOST 350 V2 BLUE TINT','yz4_1.jpg','yz4_2.jpg','yz4_3.jpg','yz4_4.jpg', 45, 9500000,N'Giày YEEZY Pegasus đẹp chất lượng cao',100,5,'YEEZY'),
+		(N'YEEZY BOOST 350 V2 YEEZREEL','yz5_1.jpg','yz5_2.jpg','yz5_3.jpg','yz5_4.jpg', 41, 8500000,N'Giày YEEZY Pegasus đẹp chất lượng cao',100,10,'YEEZY'),
+		(N'PUMA SUPER LIGA','puma1_1.jpg','puma1_2.jpg','puma1_3.jpg','puma1_4.jpg', 39, 1200000,N'Giày PUMA Pegasus đẹp chất lượng cao',100,10,'YEEZY'),
+		(N'DÉP JORDAN PLAY SLIDE','dep2_1.jpg','dep2_2.jpg','dep2_3.jpg','dep2_4.jpg', 42, 1600000,N'Giày GUCCI Pegasus đẹp chất lượng cao',100,10,'YEEZY'),
+		(N'GUCCI LOGO CTR SNKR','gucci3_1.jpg','gucci3_2.jpg','gucci3_3.jpg','gucci3_4.jpg', 40, 13000000,N'Giày GUCCI Pegasus đẹp chất lượng cao',100,8,'YEEZY'),
+		(N'GUCCI RYTHON CAT LOGO','gucci4_1.jpg','gucci4_2.jpg','gucci4_3.jpg','gucci4_4.jpg', 41, 700000,N'Giày GUCCI Pegasus đẹp chất lượng cao',100,5,'YEEZY'),
+		(N'CREP MARK ON | BÚT TÔ ĐẾ GIÀY','but5_1.jpg','but5_2.jpg','but5_3.jpg','but5_4.jpg', 00, 5600000,N'BÚT TÔ ĐẾ GIÀY đẹp chất lượng cao',100,10,'YEEZY'),
+
+
+
+
+
 
 
 
