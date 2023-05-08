@@ -42,7 +42,7 @@ create table Users(
 go
 
 create table Categories(
-	Id varchar(10) not null,
+	Id varchar(30) not null,
 	Name nvarchar(40) not null,
 	Icon varchar(40),
 	primary key (Id)
@@ -62,7 +62,7 @@ create table Products(
 	Description nvarchar(500),
 	Stock int not null,
 	Discount int,
-	Category_Id varchar(10) not null,
+	Category_Id varchar(30) not null,
 	constraint FK_Products_Categories
 	foreign key (Category_Id) references Categories(Id),
 	primary key (Id)
@@ -123,10 +123,10 @@ insert into Users(username, password, email, fullname, address, phone, introduce
 	
 insert into Categories(id, name, icon)
 	values('NIKE',N'NIKE','jacket.png'),
-	values('ADIDAS',N'ADIDAS','jacket1.png'),
-	values('JORDAN',N'JORDAN','jacket2.png'),
-	values('YEEZY',N'YEEZY','jacket3.png'),
-	values('OTHER BRANDS',N'OTHER BRANDS','jacket4.png')
+		  ('ADIDAS',N'ADIDAS','jacket1.png'),
+		  ('JORDAN',N'JORDAN','jacket2.png'),
+		  ('YEEZY',N'YEEZY','jacket3.png'),
+		  ('OTHER BRANDS',N'OTHER BRANDS','jacket4.png')
 	
 /*insert into Subcategories(id,name,Category_Id,icon)
 	values
@@ -134,7 +134,7 @@ insert into Categories(id, name, icon)
 		('JACKET1','Áo khoác nam','JACKET','jacket01.png'),
 		('JACKET2','Áo khoác nữ','JACKET','jacket02.png')*/
 
-insert into Products(name,Image1,Image2,Image3,Image4, size, price,description,stock,discount,category_id)
+insert into Products(name, Image1, Image2, Image3, Image4, size, price, description, stock, discount, category_id)
 	values
 		(N'NIKE AIR FORCE 1','airforce1_1.jpg','airforce1_2.jpg','airforce1_3.jpg','airforce1_4.jpg', 41, 3300000,N'Laptop gaming tốt nhất phân khúc',100,10,'NIKE'),
 		(N'NIKE DOWNSHIFTER 12','nike_down2_1.jpg','nike_down2_2.jpg','nike_down2_3.jpg','nike_down2_4.jpg', 40, 2200000,N'Giày đẹp chất lượng cao',100,7,'NIKE'),
@@ -144,7 +144,7 @@ insert into Products(name,Image1,Image2,Image3,Image4, size, price,description,s
 		(N'ADIDAS FORUM LOW CL','adidas_low1_1.jpg','adidas_low1_2.jpg','adidas_low1_3.jpg','adidas_low1_4.jpg', 38, 3200000,N'Giày Nike Pegasus đẹp chất lượng cao',100,10,'ADIDAS'),
 		(N'ADIDAS ULTRA4D SUN DEVILS','adidas_sun2_1.jpg','adidas_sun2_2.jpg','adidas_sun2_3.jpg','adidas_sun2_4.jpg', 44, 4800000,N'Giày ADIDAS Pegasus đẹp chất lượng cao',100,8,'ADIDAS'),
 		(N'ADIDAS GRAND COURT','adidas_grand3_1.jpg','adidas_grand3_2.jpg','adidas_grand3_3.jpg','adidas_grand3_4.jpg', 40, 2300000,N'Giày ADIDAS Pegasus đẹp chất lượng cao',100,10,'ADIDAS'),
-		(N'ADIDAS NY90','adidas_ny4_1.jpg','adidas_ny4_2.jpg','adidas_ny4_3.jpg','adidas_ny4_4.jpg', 38, 1900000,N'Giày ADIDAS Pegasus đẹp chất lượng cao',100,8,'A DIDAS'),
+		(N'ADIDAS NY90','adidas_ny4_1.jpg','adidas_ny4_2.jpg','adidas_ny4_3.jpg','adidas_ny4_4.jpg', 38, 1900000,N'Giày ADIDAS Pegasus đẹp chất lượng cao',100,8,'ADIDAS'),
 		(N'ADIDAS SAMBA CLASSIC','adidas_samba5_1.jpg','adidas_samba5_2.jpg','adidas_samba5_3.jpg','adidas_samba5_4.jpg', 40, 5800000,N'Giày ADIDAS Pegasus đẹp chất lượng cao',100,7,'ADIDAS'),
 		(N'JORDAN 1 MID SE','jordan_mid1_1.jpg','jordan_mid1_2.jpg','jordan_mid1_3.jpg','jordan_mid1_4.jpg', 41, 7300000,N'Giày JORDAN Pegasus đẹp chất lượng cao',100,10,'JORDAN'),
 		(N'JORDAN 1 LOW SE','jordan_low2_1.jpg','jordan_low2_2.jpg','jordan_low2_3.jpg','jordan_low2_4.jpg', 40, 4350000,N'Giày JORDAN Pegasus đẹp chất lượng cao',100,10,'JORDAN'),
@@ -160,7 +160,7 @@ insert into Products(name,Image1,Image2,Image3,Image4, size, price,description,s
 		(N'DÉP JORDAN PLAY SLIDE','dep2_1.jpg','dep2_2.jpg','dep2_3.jpg','dep2_4.jpg', 42, 1600000,N'Giày GUCCI Pegasus đẹp chất lượng cao',100,10,'YEEZY'),
 		(N'GUCCI LOGO CTR SNKR','gucci3_1.jpg','gucci3_2.jpg','gucci3_3.jpg','gucci3_4.jpg', 40, 13000000,N'Giày GUCCI Pegasus đẹp chất lượng cao',100,8,'YEEZY'),
 		(N'GUCCI RYTHON CAT LOGO','gucci4_1.jpg','gucci4_2.jpg','gucci4_3.jpg','gucci4_4.jpg', 41, 700000,N'Giày GUCCI Pegasus đẹp chất lượng cao',100,5,'YEEZY'),
-		(N'CREP MARK ON | BÚT TÔ ĐẾ GIÀY','but5_1.jpg','but5_2.jpg','but5_3.jpg','but5_4.jpg', 00, 5600000,N'BÚT TÔ ĐẾ GIÀY đẹp chất lượng cao',100,10,'YEEZY'),
+		(N'CREP MARK ON | BÚT TÔ ĐẾ GIÀY','but5_1.jpg','but5_2.jpg','but5_3.jpg','but5_4.jpg', 42, 5600000,N'BÚT TÔ ĐẾ GIÀY đẹp chất lượng cao',100,10,'YEEZY')
 
 
 
