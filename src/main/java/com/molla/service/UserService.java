@@ -1,5 +1,7 @@
 package com.molla.service;
 
-public interface UserService {
+import com.molla.entity.User;
 
+public interface UserService {
+	User findById(String username);
 }
