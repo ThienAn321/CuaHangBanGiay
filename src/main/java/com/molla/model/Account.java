@@ -1,4 +1,4 @@
-package com.molla.entity;
+package com.molla.model;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -17,7 +17,7 @@ import lombok.Data;
 @Entity
 @Data
 @Table(name = "Users")
-public class User{
+public class Account{
 	@Id
 	private String username;
 	private String password;

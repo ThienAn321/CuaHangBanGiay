@@ -1,4 +1,4 @@
-package com.molla.entity;
+package com.molla.model;
 
 import java.io.Serializable;
 import java.util.List;
@@ -22,6 +22,6 @@ public class Role{
 	
 	@JsonIgnore
 	@OneToMany(mappedBy = "role")
-	private List<User> users;
+	private List<Account> users;
 	
 }

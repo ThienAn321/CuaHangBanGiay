@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.molla.entity.Product;
+import com.molla.model.Product;
 import com.molla.service.ProductService;
 
 

@@ -1,4 +1,4 @@
-package com.molla.entity;
+package com.molla.model;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -28,7 +28,7 @@ public class Order{
 
 	@ManyToOne
 	@JoinColumn(name = "Username")
-	private User user;
+	private Account user;
 	private Date createDate;
 	
 	@JsonIgnore

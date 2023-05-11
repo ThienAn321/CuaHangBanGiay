@@ -2,7 +2,7 @@ package com.molla.service;
 
 import java.util.List;
 
-import com.molla.entity.Category;
+import com.molla.model.Category;
 
 public interface CategoryService {
 

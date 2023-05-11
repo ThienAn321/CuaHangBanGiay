@@ -119,7 +119,9 @@ insert into Roles(id, name)
 		  ('USER','Users')
 	
 insert into Users(username, password, email, fullname, address, phone, introduce, status, Activate_Code, Forgot_Password_Code, Avatar, Role_Id, Create_Date)
-	values('admin','admin','thienandeptrai@gmail.com',N'Trịnh Hữu Thiện Ân',null,null,null,1,'0123456789','0123456789','avatar1.png', 'ADMIN', null)
+	values('admin','admin','',N'Admin',null,null,null,1, null, null,'avatar1.png', 'ADMIN', null),
+		  ('thienan903','123456','thienandeptrai@gmail.com',N'Trịnh Hữu Thiện Ân',null,null,null,1,'0123456789','0123456789','avatar1.png', 'ADMIN', null),
+		  ('taipc','123456','tai123456@gmail.com',N'Ngô Ngọc Tài',null,null,null,1,'0123456789','0123456789','avatar1.png', 'ADMIN', null)
 	
 insert into Categories(id, name, icon)
 	values('NIKE',N'NIKE','jacket.png'),

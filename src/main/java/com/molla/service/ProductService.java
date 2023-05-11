@@ -2,7 +2,7 @@ package com.molla.service;
 
 import java.util.List;
 
-import com.molla.entity.Product;
+import com.molla.model.Product;
 
 public interface ProductService {
 

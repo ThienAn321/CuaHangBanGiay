@@ -1,4 +1,4 @@
-package com.molla.entity;
+package com.molla.model;
 
 import java.util.Date;
 import java.util.List;

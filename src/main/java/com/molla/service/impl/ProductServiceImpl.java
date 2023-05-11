@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.molla.entity.Product;
+import com.molla.model.Product;
 import com.molla.repository.ProductRepository;
 import com.molla.service.ProductService;
 
