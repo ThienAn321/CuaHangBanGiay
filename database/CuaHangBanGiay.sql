@@ -22,12 +22,12 @@ go
 
 create table Users(
 	Username varchar(30) not null,
-	Password varchar(30),
+	Password varchar(60),
+	CPassword varchar(60),
 	Email varchar(40) not null,
 	Fullname nvarchar(40),
 	Address nvarchar(200),
 	Phone nvarchar(10),
-	Introduce nvarchar(300),
 	Status bit,
 	Activate_Code varchar(40),
 	Forgot_Password_Code varchar(40),
@@ -118,10 +118,10 @@ insert into Roles(id, name)
 	values('ADMIN','Administrators'),
 		  ('USER','Users')
 	
-insert into Users(username, password, email, fullname, address, phone, introduce, status, Activate_Code, Forgot_Password_Code, Avatar, Role_Id, Create_Date)
-	values('admin','admin','',N'Admin',null,null,null,1, null, null,'avatar1.png', 'ADMIN', null),
-		  ('thienan903','123456','thienandeptrai@gmail.com',N'Trịnh Hữu Thiện Ân',null,null,null,1,'0123456789','0123456789','avatar1.png', 'ADMIN', null),
-		  ('taipc','123456','tai123456@gmail.com',N'Ngô Ngọc Tài',null,null,null,1,'0123456789','0123456789','avatar1.png', 'ADMIN', null)
+insert into Users(username, password, CPassword, email, fullname, address, phone, status, Activate_Code, Forgot_Password_Code, Avatar, Role_Id, Create_Date)
+	values('admin','admin', 'admin','',N'Admin',null,null, 1, null, null,'avatar1.png', 'ADMIN', null),
+		  ('thienan903','123456','123456','thienandeptrai@gmail.com',N'Trịnh Hữu Thiện Ân',null,null, 1,'0123456789','0123456789','avatar1.png', 'ADMIN', null),
+		  ('taipc','123456','123456','tai123456@gmail.com',N'Ngô Ngọc Tài',null,null, 1,'0123456789','0123456789','avatar1.png', 'ADMIN', null)
 	
 insert into Categories(id, name, icon)
 	values('NIKE',N'NIKE','jacket.png'),

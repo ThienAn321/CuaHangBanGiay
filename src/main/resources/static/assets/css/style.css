@@ -15598,7 +15598,6 @@ button:focus {
     }
 
     .form-tab .form-footer .btn {
-        width: auto;
         margin-top: 0
     }
 }
@@ -15615,7 +15614,7 @@ button:focus {
     .form-tab .form-footer .btn {
         margin-left: 0;
         margin-right: 1.6rem;
-        order: -1
+		margin : 15px 0px 0px;
     }
 
     .form-tab .form-footer .forgot-link {

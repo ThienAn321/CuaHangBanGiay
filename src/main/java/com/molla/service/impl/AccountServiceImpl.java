@@ -15,6 +15,16 @@ public class AccountServiceImpl implements AccountService {
 	@Override
 	public Account findById(String username) {
 		return accountRepository.findById(username).get();
+	}
+
+	@Override
+	public Account createUser(Account account) {
+		return accountRepository.save(account);
+	}
+
+	@Override
+	public boolean checkUsername(String username) {
+		return accountRepository.existsById(username);
 	}	
 
 }

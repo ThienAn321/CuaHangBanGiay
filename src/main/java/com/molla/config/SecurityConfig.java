@@ -22,7 +22,7 @@ public class SecurityConfig{
 	AccountService accountService;
 	
 	@Autowired
-	public void configureAuthentication(AuthenticationManagerBuilder auth) throws Exception {
+	protected void configureAuthentication(AuthenticationManagerBuilder auth) throws Exception {
 		auth.userDetailsService(username -> {
 			try {
 				Account user = accountService.findById(username);
@@ -40,13 +40,10 @@ public class SecurityConfig{
 		http.csrf().disable()
 			.cors().disable();
 		
-//		http
-//			.authorizeHttpRequests(authorize -> authorize 
-//			.anyRequest().permitAll()
-//			);
-		
 		http
 			.authorizeHttpRequests()
+			.requestMatchers("/oder/**").authenticated()
+			.requestMatchers("/admin/**").hasRole("ADMIN")
 			.anyRequest().permitAll();
 		
 		http.formLogin()
@@ -54,9 +51,7 @@ public class SecurityConfig{
 			.loginProcessingUrl("/login")
 			.defaultSuccessUrl("/home", true)
 			.failureUrl("/error");
-	
 		
-	
 //		http.logout()
 //			.logoutUrl("/security/logoff")
 //			.logoutSuccessUrl("/security/logoff/success");

@@ -1,5 +1,7 @@
 package com.molla.service;
 
-public interface RoleService {
+import com.molla.model.Role;
 
+public interface RoleService {
+	Role getRole(String id);
 }
