@@ -26,9 +26,10 @@ public class SecurityConfig{
 		auth.userDetailsService(username -> {
 			try {
 				Account user = accountService.findById(username);
+				boolean enabled = !user.getAccountVerified();
 				String password = passwordEncoder().encode(user.getPassword());
 				String roles = user.getRole().getId();
-				return User.withUsername(username).password(password).roles(roles).build();
+				return User.withUsername(username).password(password).roles(roles).disabled(enabled).build();
 			} catch (NoSuchElementException e) {
 				throw new UsernameNotFoundException(username + "not found");
 			}

@@ -28,7 +28,7 @@ public class Order{
 
 	@ManyToOne
 	@JoinColumn(name = "Username")
-	private Account user;
+	private Account account;
 	private Date createDate;
 	
 	@JsonIgnore

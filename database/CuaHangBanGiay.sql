@@ -20,7 +20,7 @@ create table Roles(
 
 go
 
-create table Users(
+create table Accounts(
 	Username varchar(30) not null,
 	Password varchar(60),
 	CPassword varchar(60),
@@ -28,15 +28,29 @@ create table Users(
 	Fullname nvarchar(40),
 	Address nvarchar(200),
 	Phone nvarchar(10),
-	Status bit,
+	accountVerified bit,
 	Activate_Code varchar(40),
 	Forgot_Password_Code varchar(40),
 	Avatar varchar(40),
 	primary key (Username),
 	Role_Id varchar(10) not null,
-	constraint FK_Users_Roles
+	constraint FK_Accounts_Roles
 	foreign key (Role_Id) references Roles(Id),
-	Create_Date date
+	Create_Date varchar(50)
+)
+
+go
+
+create table Confirmation_Token(
+	Id int identity(1,1),
+	Token nvarchar(60) unique not null,
+	Created_At varchar(50),
+	Expire_At varchar(50),
+	Is_Expired bit,
+	primary key(id),
+	Account_Id varchar(30),
+	constraint FK_ConfirmationToken_Accounts
+	foreign key (Account_Id) references Accounts(Username),
 )
 
 go
@@ -81,8 +95,8 @@ go
 create table Orders(
 	Id int identity(1,1),
 	Username varchar(30) not null,
-	constraint FK_Orders_Users
-	foreign key (Username) references Users (Username),
+	constraint FK_Orders_Accounts
+	foreign key (Username) references Accounts (Username),
 	Create_Date date,
 	order_status varchar(30),
 	constraint FK_Orders_OrderStatus
@@ -116,9 +130,9 @@ go
 
 insert into Roles(id, name)
 	values('ADMIN','Administrators'),
-		  ('USER','Users')
+		  ('USER','Accounts')
 	
-insert into Users(username, password, CPassword, email, fullname, address, phone, status, Activate_Code, Forgot_Password_Code, Avatar, Role_Id, Create_Date)
+insert into Accounts(username, password, CPassword, email, fullname, address, phone, accountVerified, Activate_Code, Forgot_Password_Code, Avatar, Role_Id, Create_Date)
 	values('admin','admin', 'admin','',N'Admin',null,null, 1, null, null,'avatar1.png', 'ADMIN', null),
 		  ('thienan903','123456','123456','thienandeptrai@gmail.com',N'Trịnh Hữu Thiện Ân',null,null, 1,'0123456789','0123456789','avatar1.png', 'ADMIN', null),
 		  ('taipc','123456','123456','tai123456@gmail.com',N'Ngô Ngọc Tài',null,null, 1,'0123456789','0123456789','avatar1.png', 'ADMIN', null)

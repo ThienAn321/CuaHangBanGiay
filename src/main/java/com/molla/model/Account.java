@@ -2,9 +2,11 @@ package com.molla.model;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
@@ -18,7 +20,7 @@ import lombok.Data;
 
 @Entity
 @Data
-@Table(name = "Users")
+@Table(name = "Accounts")
 public class Account{
 	@Id
 	@NotBlank(message = "Không để trống username")
@@ -39,8 +41,11 @@ public class Account{
 	
 	private String address;
 	private String phone;
-	private Date createDate;
-	private Boolean status;
+	private String createDate;
+	
+	@Column(name = "accountverified")
+	private Boolean accountVerified;
+	
 	private String activateCode;
 	private String forgotPasswordCode;
 	private String avatar;
@@ -50,7 +55,11 @@ public class Account{
 	private Role role;
 	
 	@JsonIgnore
-	@OneToMany(mappedBy = "user")
+	@OneToMany(mappedBy = "account")
 	private List<Order> orders;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "account")
+    private Set<ConfirmationToken> tokens;
 	
 }
