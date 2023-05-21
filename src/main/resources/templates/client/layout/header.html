@@ -1,16 +1,30 @@
 <div xmlns:th="http://www.thymeleaf.org">
 	<div class="header-top">
 		<div class="container">
-
-			<div class="header-right" style="position: relative; padding-top: .8rem; padding-bottom: .8rem">
+			<div class="header-right" style="position: relative; padding: 10px 10px;">
 				<ul class="top-menu">
-					<li><a href="#">Links</a>
+					<li>
 						<ul>
 							<li><a href="wishlist.html"><i class="icon-heart-o"></i>My Wishlist <span>(3)</span></a></li>
 							<li><a href="about.html">About Us</a></li>
 							<li><a href="contact.html">Contact Us</a></li>
-							<li><a th:href="@{/login}"><i class="icon-user"></i>Login</a></li>
-						</ul></li>
+							<th:block sec:authorize ="!isAuthenticated()">
+								<li><a th:href="@{/login}"><i class="icon-user"></i>Login</a></li>
+							</th:block>
+													
+							<li>
+	                            <div class="header-dropdown" style="padding-top: .75rem; padding-bottom: .75rem; ">
+	                                <a href="#">USD</a>
+		                             <div class="header-menu">
+		                                <ul style="display : block; margin-top: 0">
+		                                   <li><a href="#">Eur</a></li>
+		                                   <li><a href="#">Usd</a></li>
+		                                </ul>
+		                             </div><!-- End .header-menu -->
+	                             </div>
+	                        </li>						
+						</ul>						
+					</li>
 				</ul>
 				<!-- End .top-menu -->
 			</div>
@@ -29,7 +43,7 @@
 				</button>
 
 				<a th:href=@{/home} class="logo"> <img
-					src="assets/images/demos/demo-10/logo.png" alt="Molla Logo"
+					th:src="@{/assets/images/demos/demo-10/logo.png}" alt="Molla Logo"
 					width="105" height="25">
 				</a>
 			</div>
