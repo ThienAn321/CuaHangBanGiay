@@ -45,7 +45,6 @@ public class AccountServiceImpl implements AccountService {
 	@Override
 	public void createUser(Account account) {
 		String password = passwordEncoder.encode(account.getPassword());
-		String cPassword = passwordEncoder.encode(account.getCPassword());
 		
 		Role userRole = roleService.getRole("USER");
 
@@ -53,7 +52,6 @@ public class AccountServiceImpl implements AccountService {
 		LocalDateTime now = LocalDateTime.now();
 
 		account.setPassword(password);
-		account.setCPassword(cPassword);
 		account.setRole(userRole);
 		account.setAccountVerified(false);
 		account.setCreateDate(now.format(formatter));

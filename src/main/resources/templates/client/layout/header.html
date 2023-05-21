@@ -11,18 +11,21 @@
 							<th:block sec:authorize ="!isAuthenticated()">
 								<li><a th:href="@{/login}"><i class="icon-user"></i>Login</a></li>
 							</th:block>
-													
-							<li>
-	                            <div class="header-dropdown" style="padding-top: .75rem; padding-bottom: .75rem; ">
-	                                <a href="#">USD</a>
-		                             <div class="header-menu">
-		                                <ul style="display : block; margin-top: 0">
-		                                   <li><a href="#">Eur</a></li>
-		                                   <li><a href="#">Usd</a></li>
-		                                </ul>
-		                             </div><!-- End .header-menu -->
-	                             </div>
-	                        </li>						
+							
+							<th:block sec:authorize ="isAuthenticated()">					
+								<li>
+		                            <div class="header-dropdown">
+		                                <a th:text="${#authentication.name}"></a>
+			                             <div class="header-menu" style=" display : block;"> 
+			                                <ul style="display : block;  text-align: left;">
+			                                   <li><a href="#">Thông tin tài khoản</a></li>
+			                                   <li><a href="#">Lịch sử giao dịch</a></li>
+			                                   <li><a th:href="@{/logout}">Đăng xuất</a></li>
+			                                </ul>
+			                             </div><!-- End .header-menu -->
+		                             </div>
+		                        </li>	
+	                        </th:block>					
 						</ul>						
 					</li>
 				</ul>

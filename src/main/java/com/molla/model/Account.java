@@ -15,8 +15,8 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
 import lombok.Data;
+
 
 @Entity
 @Data
@@ -28,9 +28,6 @@ public class Account{
 	
 	@NotBlank(message = "Không để trống password")
 	private String password;
-	
-	@NotBlank(message = "Không để trống confirm password")
-	private String CPassword;
 	
 	@NotBlank(message = "Không để trống email")
 	@Email(message = "Không đúng định dạng email")

@@ -23,7 +23,6 @@ go
 create table Accounts(
 	Username varchar(30) not null,
 	Password varchar(60),
-	CPassword varchar(60),
 	Email varchar(40) not null,
 	Fullname nvarchar(40),
 	Address nvarchar(200),
@@ -132,10 +131,10 @@ insert into Roles(id, name)
 	values('ADMIN','Administrators'),
 		  ('USER','Accounts')
 	
-insert into Accounts(username, password, CPassword, email, fullname, address, phone, accountVerified, Activate_Code, Forgot_Password_Code, Avatar, Role_Id, Create_Date)
-	values('admin','admin', 'admin','',N'Admin',null,null, 1, null, null,'avatar1.png', 'ADMIN', null),
-		  ('thienan903','123456','123456','thienandeptrai@gmail.com',N'Trịnh Hữu Thiện Ân',null,null, 1,'0123456789','0123456789','avatar1.png', 'ADMIN', null),
-		  ('taipc','123456','123456','tai123456@gmail.com',N'Ngô Ngọc Tài',null,null, 1,'0123456789','0123456789','avatar1.png', 'ADMIN', null)
+insert into Accounts(username, password, email, fullname, address, phone, accountVerified, Activate_Code, Forgot_Password_Code, Avatar, Role_Id, Create_Date)
+	values('admin','$2a$12$9EuRbuiUGcYAoXZhwxF1kOnIbSzr0ESTk3chnCcXFiH/mwXag3.Oe','',N'Admin',null,null, 1, null, null,'avatar1.png', 'ADMIN', null),
+		  ('thienan903','$2a$12$Yj44EdwxoCkuKkgCwoh5sufE444pZ5nlU3NPMMaY3BGp7bdLJ.YWC','thienandeptrai@gmail.com',N'Trịnh Hữu Thiện Ân',null,null, 1,'0123456789','0123456789','avatar1.png', 'ADMIN', null),
+		  ('taipc','$2a$12$52w.qYtEmJIF9x28vEa/futvwTw3UOOPhCw2KAAxv9cNLk1h911w6','tai123456@gmail.com',N'Ngô Ngọc Tài',null,null, 1,'0123456789','0123456789','avatar1.png', 'ADMIN', null)
 	
 insert into Categories(id, name, icon)
 	values('NIKE',N'NIKE','jacket.png'),

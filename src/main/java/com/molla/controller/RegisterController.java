@@ -29,7 +29,8 @@ public class RegisterController {
 	}
 
 	@PostMapping("/createUser")
-	public String createUser(Model model, @Validated @ModelAttribute("account") Account user, Errors errors) {
+	public String createUser(Model model, String confirmPassword, @Validated @ModelAttribute("account") Account user, Errors errors) {
+		
 		boolean check = accountService.checkUsername(user.getUsername());
 
 		if (errors.hasErrors()) {
@@ -40,7 +41,7 @@ public class RegisterController {
 			model.addAttribute("message", "Tài khoản này đã có người sử dụng !");
 		}
 
-		if (user.getPassword().equals(user.getCPassword())) {
+		if (user.getPassword().equals(confirmPassword)) {
 			accountService.createUser(user);
 			model.addAttribute("message", "Chúc mừng bạn đã đăng kí thành công !");
 			model.addAttribute("active", "Vui lòng check email của bạn để kích hoạt tài khoản !");

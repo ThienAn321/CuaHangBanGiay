@@ -26,10 +26,10 @@ public class SecurityConfig{
 		auth.userDetailsService(username -> {
 			try {
 				Account user = accountService.findById(username);
-				boolean enabled = !user.getAccountVerified();
-				String password = passwordEncoder().encode(user.getPassword());
+				boolean enabled = user.getAccountVerified();			
+				String password = user.getPassword();
 				String roles = user.getRole().getId();
-				return User.withUsername(username).password(password).roles(roles).disabled(enabled).build();
+				return User.withUsername(username).password(password).roles(roles).disabled(!enabled).build();
 			} catch (NoSuchElementException e) {
 				throw new UsernameNotFoundException(username + "not found");
 			}
@@ -43,7 +43,7 @@ public class SecurityConfig{
 		
 		http
 			.authorizeHttpRequests()
-			.requestMatchers("/oder/**").authenticated()
+			.requestMatchers("/order/**").authenticated()
 			.requestMatchers("/admin/**").hasRole("ADMIN")
 			.anyRequest().permitAll();
 		
@@ -54,8 +54,8 @@ public class SecurityConfig{
 			.failureUrl("/error");
 		
 //		http.logout()
-//			.logoutUrl("/security/logoff")
-//			.logoutSuccessUrl("/security/logoff/success");
+//			.logoutUrl("/logoff")
+//			.logoutSuccessUrl("/home");
 
 		http.rememberMe()
 			.tokenValiditySeconds(86400);
@@ -64,7 +64,7 @@ public class SecurityConfig{
 	}
 	
 	@Bean
-	public BCryptPasswordEncoder passwordEncoder() {
+	public BCryptPasswordEncoder getPasswordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
 }
