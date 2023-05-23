@@ -7,6 +7,8 @@ public interface AccountService {
 	
 	public void createUser(Account account);
 	
+	public void forgotPassword(Account account);
+	
 	boolean checkUsername(String username);
 	
 	boolean verifyAccount (String token);

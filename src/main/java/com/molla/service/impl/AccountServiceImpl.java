@@ -36,6 +36,27 @@ public class AccountServiceImpl implements AccountService {
 	
 	@Autowired
 	EmailService emailService;
+	
+	public void sendConfirmationToken(Account account) {
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss a");
+		LocalDateTime now = LocalDateTime.now();
+		String token = UUID.randomUUID().toString();
+		// set token expire 15 minutes
+		LocalDateTime tokenExpireAt = now.plusMinutes(15);
+
+		ConfirmationToken confirmationToken = new ConfirmationToken(token, now.format(formatter),
+				tokenExpireAt.format(formatter), false, account);
+		confirmationTokenService.save(confirmationToken);
+		try {
+			emailService.sendMail(
+					"thienan98765123@gmail.com",
+					account.getEmail(), 
+					"Confirm Account", 
+					emailService.buildEmail(account.getFullname(), token));
+		} catch (MessagingException e) {
+			e.printStackTrace();
+		}		
+	}
 
 	@Override
 	public Account findById(String username) {
@@ -57,25 +78,7 @@ public class AccountServiceImpl implements AccountService {
 		account.setCreateDate(now.format(formatter));
 
 		accountRepository.save(account);
-
-		// random token
-		String token = UUID.randomUUID().toString();
-		// set token expire 15 minutes
-		LocalDateTime tokenExpireAt = now.plusMinutes(15);
-
-		ConfirmationToken confirmationToken = new ConfirmationToken(token, now.format(formatter),
-				tokenExpireAt.format(formatter), false, account);
-		confirmationTokenService.save(confirmationToken);
-		try {
-			emailService.sendMail(
-					"thienan98765123@gmail.com",
-					account.getEmail(), 
-					"Confirm Account", 
-					emailService.buildEmail(account.getFullname(), token));
-		} catch (MessagingException e) {
-			e.printStackTrace();
-		}
-
+		sendConfirmationToken(account);
 	}
 
 	@Override
@@ -101,5 +104,13 @@ public class AccountServiceImpl implements AccountService {
 		accountRepository.save(account);
 		return true;
 	}
+
+	@Override
+	public void forgotPassword(Account account) {
+		sendConfirmationToken(account);
+	}
+
+	
+	
 
 }
