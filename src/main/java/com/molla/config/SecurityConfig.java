@@ -51,7 +51,7 @@ public class SecurityConfig{
 			.loginPage("/login")
 			.loginProcessingUrl("/login")
 			.defaultSuccessUrl("/home", true)
-			.failureUrl("/error");
+			.failureUrl("/login/error");
 		
 //		http.logout()
 //			.logoutUrl("/logoff")

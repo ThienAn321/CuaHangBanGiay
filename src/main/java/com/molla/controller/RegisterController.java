@@ -54,14 +54,13 @@ public class RegisterController {
 
 	@GetMapping("/confirm")
 	public String confirm(Model model, @RequestParam("token") String token) {
-		if (accountService.verifyAccount(token)) {
+		if (accountService.verifyRegisterAccount(token)) {
 			model.addAttribute("message", "Chúc mừng bạn đã kích hoạt tài khoản thành công !");
 			return "client/user/confirm";
 		} else {
 			model.addAttribute("message", "Đường link này đã hết hạn !");
 			return "client/user/confirm";
 		}
-
 	}
 
 }

@@ -6,4 +6,6 @@ public interface EmailService {
 	public void sendMail(String from, String to, String subject, String message) throws MessagingException;
 
 	public String buildEmail(String name, String link);
+	
+	public String buildEmailPasswordForgot(String name, String link);
 }

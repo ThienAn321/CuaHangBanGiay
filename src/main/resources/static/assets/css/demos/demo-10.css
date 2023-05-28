@@ -52,9 +52,9 @@
 	background-color: #ebebeb
 }
 
-.header.header-8 .top-menu li+li {
+/* .header.header-8 .top-menu li+li {
 	margin-left: 2.5rem
-}
+} */
 
 .header.header-8 .header-search .header-search-wrapper {
 	top: 60%;

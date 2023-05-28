@@ -5,11 +5,16 @@ import com.molla.model.Account;
 public interface AccountService {
 	Account findById(String username);
 	
-	public void createUser(Account account);
+	Account findByEmail(String email);
 	
-	public void forgotPassword(Account account);
+	public void createUser(Account account);
 	
 	boolean checkUsername(String username);
 	
-	boolean verifyAccount (String token);
+	boolean verifyRegisterAccount (String token);
+	
+	boolean verifyToken(String token);
+	
+	public void changePassword(Account account, String password);
+	
 }

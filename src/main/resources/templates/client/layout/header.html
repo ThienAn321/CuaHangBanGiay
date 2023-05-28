@@ -4,7 +4,7 @@
 			<div class="header-right" style="position: relative; padding: 10px 10px;">
 				<ul class="top-menu">
 					<li>
-						<ul>
+						<ul class="top-menu-list">
 							<li><a href="wishlist.html"><i class="icon-heart-o"></i>My Wishlist <span>(3)</span></a></li>
 							<li><a href="about.html">About Us</a></li>
 							<li><a href="contact.html">Contact Us</a></li>
@@ -16,8 +16,8 @@
 								<li>
 		                            <div class="header-dropdown">
 		                                <a th:text="${#authentication.name}"></a>
-			                             <div class="header-menu" style=" display : block;"> 
-			                                <ul style="display : block;  text-align: left;">
+			                             <div class="header-menu"> 
+			                                <ul class="header-list">
 			                                   <li><a href="#">Thông tin tài khoản</a></li>
 			                                   <li><a href="#">Lịch sử giao dịch</a></li>
 			                                   <li><a th:href="@{/logout}">Đăng xuất</a></li>

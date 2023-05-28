@@ -16,10 +16,6 @@ import com.molla.service.ConfirmationTokenService;
 import com.molla.service.EmailService;
 import com.molla.service.RoleService;
 
-import jakarta.mail.MessagingException;
-
-import java.util.UUID;
-
 @Service
 public class AccountServiceImpl implements AccountService {
 	@Autowired
@@ -27,36 +23,15 @@ public class AccountServiceImpl implements AccountService {
 
 	@Autowired
 	AccountRepository accountRepository;
-	
+
 	@Autowired
 	BCryptPasswordEncoder passwordEncoder;
 
 	@Autowired
 	ConfirmationTokenService confirmationTokenService;
-	
+
 	@Autowired
 	EmailService emailService;
-	
-	public void sendConfirmationToken(Account account) {
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss a");
-		LocalDateTime now = LocalDateTime.now();
-		String token = UUID.randomUUID().toString();
-		// set token expire 15 minutes
-		LocalDateTime tokenExpireAt = now.plusMinutes(15);
-
-		ConfirmationToken confirmationToken = new ConfirmationToken(token, now.format(formatter),
-				tokenExpireAt.format(formatter), false, account);
-		confirmationTokenService.save(confirmationToken);
-		try {
-			emailService.sendMail(
-					"thienan98765123@gmail.com",
-					account.getEmail(), 
-					"Confirm Account", 
-					emailService.buildEmail(account.getFullname(), token));
-		} catch (MessagingException e) {
-			e.printStackTrace();
-		}		
-	}
 
 	@Override
 	public Account findById(String username) {
@@ -66,7 +41,7 @@ public class AccountServiceImpl implements AccountService {
 	@Override
 	public void createUser(Account account) {
 		String password = passwordEncoder.encode(account.getPassword());
-		
+
 		Role userRole = roleService.getRole("USER");
 
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss a");
@@ -78,7 +53,7 @@ public class AccountServiceImpl implements AccountService {
 		account.setCreateDate(now.format(formatter));
 
 		accountRepository.save(account);
-		sendConfirmationToken(account);
+		confirmationTokenService.sendConfirmationToken(account);
 	}
 
 	@Override
@@ -87,7 +62,7 @@ public class AccountServiceImpl implements AccountService {
 	}
 
 	@Override
-	public boolean verifyAccount(String token) {
+	public boolean verifyRegisterAccount(String token) {
 		ConfirmationToken confirmationToken = confirmationTokenService.findByToken(token).get();
 
 		if (confirmationToken == null || confirmationToken.isExpired()) {
@@ -102,15 +77,32 @@ public class AccountServiceImpl implements AccountService {
 
 		account.setAccountVerified(true);
 		accountRepository.save(account);
+		confirmationTokenService.delete(confirmationToken.getId());
 		return true;
 	}
 
 	@Override
-	public void forgotPassword(Account account) {
-		sendConfirmationToken(account);
+	public Account findByEmail(String email) {
+		return accountRepository.findByEmail(email);
 	}
 
-	
-	
+	@Override
+	public boolean verifyToken(String token) {
+		ConfirmationToken confirmationToken = confirmationTokenService.findByToken(token).get();
+
+		if (confirmationToken == null || confirmationToken.isExpired()) {
+			return false;
+		}
+
+		return true;
+	}
+
+	@Override
+	public void changePassword(Account account, String password) {
+		String encodePassword = passwordEncoder.encode(password);
+		account.setPassword(encodePassword);
+		accountRepository.save(account);
+
+	}
 
 }

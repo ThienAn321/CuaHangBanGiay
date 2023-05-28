@@ -35,5 +35,13 @@ public class EmailServiceImpl implements EmailService {
 				+ "<a href=\"http://localhost:8080/confirm?token=" + token + "\">Active account</a><br>\r\n"
 				+ "Đường link sẽ hết hạn trong vòng 15 phút.<br>\r\n" + "Cảm ơn bạn.";
 	}
+	
+	@Override
+	public String buildEmailPasswordForgot(String name, String token) {
+		return "Chào bạn " + name + ",<br>\r\n"
+				+ "Nhấn vào đường link bên dưới để đặt lại mật khẩu :<br>\r\n"
+				+ "<a href=\"http://localhost:8080/reset_password?token=" + token + "\">Reset your password</a><br>\r\n"
+				+ "Đường link sẽ hết hạn trong vòng 15 phút.<br>\r\n" + "Cảm ơn bạn.";
+	}
 
 }
