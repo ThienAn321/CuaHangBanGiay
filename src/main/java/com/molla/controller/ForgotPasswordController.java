@@ -39,7 +39,7 @@ public class ForgotPasswordController {
 		}
 		confirmationTokenService.sendForgotPasswordToken(account);
 		model.addAttribute("active", "Vui lòng check email của bạn để tiến hành reset mật khẩu !");
-		return "client/user/verify";
+		return "client/user/message";
 	}
 
 	@GetMapping("/reset_password")
@@ -47,8 +47,8 @@ public class ForgotPasswordController {
 		if (accountService.verifyToken(token)) {
 			return "client/user/confirmPassword";
 		} else {
-			model.addAttribute("message", "Đường link này đã hết hạn !");
-			return "client/user/confirm";
+			model.addAttribute("error", "Đường link này đã hết hạn !");
+			return "client/user/message";
 		}
 	}
 
@@ -66,9 +66,9 @@ public class ForgotPasswordController {
 		if (password.equals(confirmPassword)) {
 			accountService.changePassword(account, password);
 			model.addAttribute("message", "Chúc mừng bạn đã đặt lại mật khẩu thành công !");
-			return "client/user/confirm";
+			return "client/user/message";
 		} else {
-			model.addAttribute("message", "Mật khẩu và mật khẩu xác nhận không giống nhau !");
+			model.addAttribute("error", "Mật khẩu và mật khẩu xác nhận không giống nhau !");
 			return "client/user/confirmPassword";
 		}
 

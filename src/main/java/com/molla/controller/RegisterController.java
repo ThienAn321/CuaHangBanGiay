@@ -38,16 +38,16 @@ public class RegisterController {
 		}
 
 		if (check) {
-			model.addAttribute("message", "Tài khoản này đã có người sử dụng !");
+			model.addAttribute("error", "Tài khoản này đã có người sử dụng !");
 		}
 
 		if (user.getPassword().equals(confirmPassword)) {
 			accountService.createUser(user);
 			model.addAttribute("message", "Chúc mừng bạn đã đăng kí thành công !");
 			model.addAttribute("active", "Vui lòng check email của bạn để kích hoạt tài khoản !");
-			return "client/user/verify";
+			return "client/user/message";
 		} else {
-			model.addAttribute("message", "Mật khẩu và mật khẩu xác nhận không giống nhau !");
+			model.addAttribute("error", "Mật khẩu và mật khẩu xác nhận không giống nhau !");
 			return "client/user/register";
 		}
 	}
@@ -56,10 +56,10 @@ public class RegisterController {
 	public String confirm(Model model, @RequestParam("token") String token) {
 		if (accountService.verifyRegisterAccount(token)) {
 			model.addAttribute("message", "Chúc mừng bạn đã kích hoạt tài khoản thành công !");
-			return "client/user/confirm";
+			return "client/user/message";
 		} else {
-			model.addAttribute("message", "Đường link này đã hết hạn !");
-			return "client/user/confirm";
+			model.addAttribute("error", "Đường link này đã hết hạn !");
+			return "client/user/message";
 		}
 	}
 
