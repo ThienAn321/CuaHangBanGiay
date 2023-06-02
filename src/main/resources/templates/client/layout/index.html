@@ -31,9 +31,10 @@
     <link rel="stylesheet" th:href="@{/assets/css/style.css}">
     <link rel="stylesheet" th:href="@{/assets/css/skins/skin-demo-10.css}">
     <link rel="stylesheet" th:href="@{/assets/css/demos/demo-10.css}">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 </head>
 
-<body>
+<body ng-app="shopping-cart-app" ng-controller="shopping-cart-ctrl">
     <div class="page-wrapper">
         <header class="header header-8">
 			<div th:replace="~{client/layout/header}"></div>
@@ -894,7 +895,7 @@
                                             <span class="ratings-text">( 3 Reviews )</span>
                                         </div><!-- End .rating-container -->
 
-                                        <div class="product-action">
+                                        <div class="product-action" >
                                             <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
                                             <a href="popup/quickView.html" class="btn-product btn-quickview"><span>quick view</span></a>
                                         </div><!-- End .product-action -->
@@ -1022,7 +1023,7 @@
                                             </div><!-- End .product-nav -->
 
                                             <div class="product-action">
-                                                <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
+                                                <a th:attr="ng-click=@{|cart.add(${p.id})|}" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
                                                 <a href="popup/quickView.html" class="btn-product btn-quickview" title="Quick view"><span>quick view</span></a>
                                             </div><!-- End .product-action -->
                                         </div><!-- End .product-footer -->
@@ -1066,6 +1067,9 @@
     </div><!-- End .page-wrapper -->
     <button id="scroll-top" title="Back to Top"><i class="icon-arrow-up"></i></button>
 
+
+	<!-- Shopping Cart App -->
+	<script th:src="@{/assets/client/shopping-cart-app.js}"></script>
     <!-- Plugins JS File -->
     <script th:src="@{/assets/js/jquery.min.js}"></script>
     <script th:src="@{/assets/js/bootstrap.bundle.min.js}"></script>

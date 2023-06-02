@@ -32,6 +32,7 @@
     <link rel="stylesheet" th:href="@{/assets/css/plugins/nouislider/nouislider.css}">
     
     <link rel="stylesheet" th:href="@{/assets/css/skins/skin-demo-10.css}">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
     <style>
     	@import url("https://fonts.googleapis.com/css?family=Poppins:200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800");
 		
@@ -223,7 +224,7 @@
     </style>
 </head>
 
-<body>
+<body ng-app="shopping-cart-app" ng-controller="shopping-cart-ctrl">
     <div class="page-wrapper">
         <header class="header header-8">
             <div th:replace="~{client/layout/header}"></div>
@@ -292,7 +293,7 @@
                                                     <a href="#" class="btn-product btn-compare" title="Compare"><span>compare</span></a>
                                                 </div><!-- End .product-action -->
 
-                                                <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
+                                                <a th:attr="ng-click=@{|cart.add(${p.id})|}" class="btn-product btn-cart"><span>add to cart</span></a>
                                             </div><!-- End .product-list-action -->
                                         </div><!-- End .col-sm-6 col-lg-3 -->
 
@@ -593,6 +594,8 @@
     </div><!-- End .page-wrapper -->
     <button id="scroll-top" title="Back to Top"><i class="icon-arrow-up"></i></button>
 
+
+	<script th:src="@{/assets/client/shopping-cart-app.js}"></script>
     <!-- Plugins JS File -->
     <script th:src="@{/assets/js/jquery.min.js}"></script>
     <script th:src="@{/assets/js/bootstrap.bundle.min.js}"></script>

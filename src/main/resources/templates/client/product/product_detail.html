@@ -31,6 +31,7 @@
     <link rel="stylesheet" th:href="@{/assets/css/style.css}">
     <link rel="stylesheet" th:href="@{/assets/css/plugins/nouislider/nouislider.css}">
     <link rel="stylesheet" th:href="@{/assets/css/skins/skin-demo-10.css}">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
     <style>
     	@import url("https://fonts.googleapis.com/css?family=Poppins:200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800");
 		
@@ -223,7 +224,7 @@
     
 </head>
 
-<body>
+<body ng-app="shopping-cart-app" ng-controller="shopping-cart-ctrl">
     <div class="page-wrapper">
         <header class="header header-8">
 			<div th:replace="~{client/layout/header}"></div>
@@ -310,7 +311,7 @@
                                                 <input type="number" id="qty" class="form-control" value="1" min="1" max="10" step="1" data-decimals="0" required>
                                             </div><!-- End .product-details-quantity -->
 
-                                            <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
+                                            <a th:attr="ng-click=@{|cart.add(${item.id})|}" class="btn-product btn-cart"><span>add to cart</span></a>
                                         </div><!-- End .details-action-col -->
 
                                         <div class="details-action-wrapper">
@@ -959,6 +960,8 @@
         </div><!-- End .modal-dialog -->
     </div><!-- End .modal -->
 
+
+	<script th:src="@{/assets/client/shopping-cart-app.js}"></script>
     <!-- Plugins JS File -->
     <script th:src="@{/assets/js/jquery.min.js}"></script>
     <script th:src="@{/assets/js/bootstrap.bundle.min.js}"></script>

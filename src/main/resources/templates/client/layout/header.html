@@ -1,5 +1,5 @@
-<div xmlns:th="http://www.thymeleaf.org">
-	<div class="header-top">
+<div xmlns:th="http://www.thymeleaf.org" >
+	<div class="header-top" >
 		<div class="container">
 			<div class="header-right" style="position: relative; padding: 10px 10px;">
 				<ul class="top-menu">
@@ -222,64 +222,42 @@
 					<a href="#" class="dropdown-toggle" role="button"
 						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
 						data-display="static"> <i class="icon-shopping-cart"></i> <span
-						class="cart-count">2</span>
+						class="cart-count">{{cart.count}}</span>
 					</a>
 
-					<div class="dropdown-menu dropdown-menu-right">
+					<div class="dropdown-menu dropdown-menu-right" >
 						<div class="dropdown-cart-products">
-							<div class="product">
+							<div class="product" ng-repeat="item in cart.items">
 								<div class="product-cart-details">
 									<h4 class="product-title">
-										<a href="product.html">Beige knitted elastic runner shoes</a>
+										<a th:href="@{|/product/detail/{{item.id}}|}">{{item.name}}</a>
 									</h4>
 
 									<span class="cart-product-info"> <span
-										class="cart-product-qty">1</span> x $84.00
+										class="cart-product-qty">{{item.qty}}</span> x {{item.price | number :2}}
 									</span>
 								</div>
 								<!-- End .product-cart-details -->
 
 								<figure class="product-image-container">
-									<a href="product.html" class="product-image"> <img
-										src="assets/images/products/cart/product-1.jpg" alt="product">
+									<a th:href="@{/product/detail/{{item.id}}}" class="product-image"> <img
+										th:src="@{|/assets/images/products/{{item.image1}}|}" alt="product">
 									</a>
 								</figure>
-								<a href="#" class="btn-remove" title="Remove Product"><i
-									class="icon-close"></i></a>
-							</div>
-							<!-- End .product -->
-
-							<div class="product">
-								<div class="product-cart-details">
-									<h4 class="product-title">
-										<a href="product.html">Blue utility pinafore denim dress</a>
-									</h4>
-
-									<span class="cart-product-info"> <span
-										class="cart-product-qty">1</span> x $76.00
-									</span>
-								</div>
-								<!-- End .product-cart-details -->
-
-								<figure class="product-image-container">
-									<a href="product.html" class="product-image"> <img
-										src="assets/images/products/cart/product-2.jpg" alt="product">
-									</a>
-								</figure>
-								<a href="#" class="btn-remove" title="Remove Product"><i
+								<a th:attr="ng-click=@{|cart.remove(item.id)|}" class="btn-remove" title="Remove Product" ><i
 									class="icon-close"></i></a>
 							</div>
 							<!-- End .product -->
 						</div>
 						<!-- End .cart-product -->
 
-						<div class="dropdown-cart-total">
-							<span>Total</span> <span class="cart-total-price">$160.00</span>
+						<div class="dropdown-cart-total" >
+							<span>Total</span> <span class="cart-total-price">{{cart.amount | currency:'':0}} VNĐ</span>
 						</div>
 						<!-- End .dropdown-cart-total -->
 
 						<div class="dropdown-cart-action">
-							<a href="cart.html" class="btn btn-primary">View Cart</a> <a
+							<a th:href="@{../cart}" class="btn btn-primary">View Cart</a> <a
 								href="checkout.html" class="btn btn-outline-primary-2"><span>Checkout</span><i
 								class="icon-long-arrow-right"></i></a>
 						</div>
