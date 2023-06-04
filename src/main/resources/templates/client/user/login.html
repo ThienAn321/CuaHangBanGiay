@@ -28,10 +28,11 @@
     <link rel="stylesheet" th:href="@{/assets/css/style.css}">
     <link rel="stylesheet" th:href="@{/assets/css/skins/skin-demo-10.css}">
     <link rel="stylesheet" th:href="@{/assets/css/demos/demo-10.css}">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 </head>
 
 <body>
-    <div class="page-wrapper">
+    <div class="page-wrapper" ng-app="shopping-cart-app" ng-controller="shopping-cart-ctrl">
         <header class="header header-8">
         	<div th:replace="~{client/layout/header}"></div>        
         </header><!-- End .header -->
@@ -64,7 +65,7 @@
 							    		<div class="form-footer">
 			                				<div class="custom-control custom-checkbox">
 												<input type="checkbox" class="custom-control-input" id="signin-remember-2">
-												<label class="custom-control-label" for="signin-remember-2">Remember Me</label>
+												<label class="custom-control-label" for="signin-remember-2" name="remember-me">Remember Me</label>
 											</div><!-- End .custom-checkbox -->
 
 											<a th:href="@{/forgot}" class="forgot-link">Forgot Your Password?</a>
@@ -106,7 +107,8 @@
         </footer><!-- End .footer -->
     </div><!-- End .page-wrapper -->
     <button id="scroll-top" title="Back to Top"><i class="icon-arrow-up"></i></button>
-
+    
+    <script th:src="@{/assets/client/shopping-cart-app.js}"></script>
     <!-- Plugins JS File -->  
     <script th:src="@{/assets/js/jquery.min.js}"></script>
     <script th:src="@{/assets/js/bootstrap.bundle.min.js}"></script>
