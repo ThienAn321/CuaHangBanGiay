@@ -2,6 +2,7 @@ package com.molla.service.impl;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -103,6 +104,11 @@ public class AccountServiceImpl implements AccountService {
 		account.setPassword(encodePassword);
 		accountRepository.save(account);
 
+	}
+
+	@Override
+	public List<Account> findByRoleUser() {
+		return accountRepository.findByRoleUser();
 	}
 
 }

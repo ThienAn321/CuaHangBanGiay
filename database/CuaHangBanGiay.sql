@@ -14,7 +14,7 @@ go
 
 create table Roles(
 	Id varchar(10) not null,
-	Name nvarchar(20) not null,
+	Name nvarchar(50) not null,
 	primary key (Id)
 )
 
@@ -70,7 +70,7 @@ create table Products(
 	Image2 varchar(50),
 	Image3 varchar(50),
 	Image4 varchar(50),
-	Size int not null,
+	Size int,
 	Price decimal(12,2) not null,
 	Description nvarchar(500),
 	Stock int not null,
@@ -128,13 +128,15 @@ create table Orders_Detail(
 go
 
 insert into Roles(id, name)
-	values('ADMIN','Administrators'),
-		  ('USER','Accounts')
+	values('ADMIN', N'Quản trị viên'),
+		  ('USER', N'Người dùng')
 	
 insert into Accounts(username, password, email, fullname, address, phone, accountVerified, Activate_Code, Forgot_Password_Code, Avatar, Role_Id, Create_Date)
 	values('admin','$2a$12$9EuRbuiUGcYAoXZhwxF1kOnIbSzr0ESTk3chnCcXFiH/mwXag3.Oe','',N'Admin',null,null, 1, null, null,'avatar1.png', 'ADMIN', null),
 		  ('thienan903','$2a$12$Yj44EdwxoCkuKkgCwoh5sufE444pZ5nlU3NPMMaY3BGp7bdLJ.YWC','thienandeptrai@gmail.com',N'Trịnh Hữu Thiện Ân',null,null, 1,'0123456789','0123456789','avatar1.png', 'ADMIN', null),
-		  ('taipc','$2a$12$52w.qYtEmJIF9x28vEa/futvwTw3UOOPhCw2KAAxv9cNLk1h911w6','tai123456@gmail.com',N'Ngô Ngọc Tài',null,null, 1,'0123456789','0123456789','avatar1.png', 'ADMIN', null)
+		  ('taipc','$2a$12$52w.qYtEmJIF9x28vEa/futvwTw3UOOPhCw2KAAxv9cNLk1h911w6','tai123456@gmail.com',N'Ngô Ngọc Tài',null,null, 1,'0123456789','0123456789','avatar1.png', 'ADMIN', null),
+		  ('user1','$2a$12$paEAY3DXEYGSyEKvvNEN9eqXGC38wSnszMCCU.KohStqdi4U0z7vy','user_test@gmail.com',N'User Test 1',null,null, 1,'0123456789','0123456789','avatar1.png', 'USER', null),
+		  ('user2','$2a$12$paEAY3DXEYGSyEKvvNEN9eqXGC38wSnszMCCU.KohStqdi4U0z7vy','user_test@gmail.com',N'User Test 1',null,null, 1,'0123456789','0123456789','avatar1.png', 'USER', null)
 	
 insert into Categories(id, name, icon)
 	values('NIKE',N'NIKE','jacket.png'),

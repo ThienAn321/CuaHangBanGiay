@@ -8,11 +8,9 @@
                     <li class="menu-title">Quản Lý</li><!-- /.menu-title -->
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-cogs"></i>Sản Phẩm</a>
-                        <ul class="sub-menu children dropdown-menu">                            
-                            <li><i class="fa fa-id-badge"></i><a href="tables-basic.html">Thêm Mới</a></li>
+						<ul class="sub-menu children dropdown-menu">
+							<li><i class="fa fa-id-badge"></i><a th:href="@{/admin/product/add}">Thêm Mới</a></li>
                             <li><i class="fa fa-bars"></i><a th:href="@{/admin/product}">Danh Sách</a></li>
-
-                            
                         </ul>
                     </li>
                     <li class="menu-item-has-children dropdown">
@@ -26,7 +24,7 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Nhân Viên</a>
                         <ul class="sub-menu children dropdown-menu">
                             <li><i class="fa fa-table"></i><a href="#">Thêm Mới</a></li>
-                            <li><i class="fa fa-table"></i><a href="#">Danh Sách</a></li>
+                            <li><i class="fa fa-table"></i><a th:href="@{/admin/user}">Danh Sách</a></li>
                         </ul>
                     </li>
                     <li>
