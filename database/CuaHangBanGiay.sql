@@ -96,6 +96,7 @@ create table Orders(
 	Username varchar(30) not null,
 	constraint FK_Orders_Accounts
 	foreign key (Username) references Accounts (Username),
+	Fullname nvarchar(40),
 	Create_Date date,
 	order_status varchar(30),
 	constraint FK_Orders_OrderStatus
@@ -144,6 +145,15 @@ insert into Categories(id, name, icon)
 		  ('JORDAN',N'JORDAN','jacket2.png'),
 		  ('YEEZY',N'YEEZY','jacket3.png'),
 		  ('OTHER BRANDS',N'OTHER BRANDS','jacket4.png')
+
+		  
+insert into Order_Status
+	  values('ChoXacNhan', N'Chờ xác nhận'),
+			('ChuanBi', N'Đang chuẩn bị hàng'),
+			('XuatKho', N'Đã xuất kho'),
+			('VanChuyen', N'Đang vận chuyển'),
+			('DaGiaoHang', N'Đã giao hàng'),
+			('HuyBo', N'Huỷ đơn') 
 	
 /*insert into Subcategories(id,name,Category_Id,icon)
 	values
@@ -178,19 +188,3 @@ insert into Products(name, Image1, Image2, Image3, Image4, size, price, descript
 		(N'GUCCI LOGO CTR SNKR','gucci3_1.jpg','gucci3_2.jpg','gucci3_3.jpg','gucci3_4.jpg', 40, 13000000,N'Giày GUCCI Pegasus đẹp chất lượng cao',100,8,'YEEZY'),
 		(N'GUCCI RYTHON CAT LOGO','gucci4_1.jpg','gucci4_2.jpg','gucci4_3.jpg','gucci4_4.jpg', 41, 700000,N'Giày GUCCI Pegasus đẹp chất lượng cao',100,5,'YEEZY'),
 		(N'CREP MARK ON | BÚT TÔ ĐẾ GIÀY','but5_1.jpg','but5_2.jpg','but5_3.jpg','but5_4.jpg', 42, 5600000,N'BÚT TÔ ĐẾ GIÀY đẹp chất lượng cao',100,10,'YEEZY')
-
-
-
-
-
-
-
-
-/*insert into Order_Status
-values
-('ChoXacNhan',N'Chờ xác nhận'),
-('ChuanBi',N'Đang chuẩn bị hàng'),
-('XuatKho',N'Đã xuất kho'),
-('VanChuyen',N'Đang vận chuyển'),
-('DaGiaoHang',N'Đã giao hàng'),
-('HuyBo',N'Huỷ đơn') */

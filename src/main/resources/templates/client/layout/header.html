@@ -18,7 +18,7 @@
 							<th:block sec:authorize="isAuthenticated()">
 								<li>
 									<div class="header-dropdown">
-										<a th:text="${#authentication.name}"></a>
+										<a id="username" th:text="${#authentication.name}"></a>
 										<div class="header-menu">
 											<ul class="header-list">
 												<li><a href="#">Thông tin tài khoản</a></li>
@@ -264,9 +264,9 @@
 						<!-- End .dropdown-cart-total -->
 
 						<div class="dropdown-cart-action">
-							<a th:href="@{../cart}" class="btn btn-primary">View Cart</a> <a
-								href="checkout.html" class="btn btn-outline-primary-2"><span>Checkout</span><i
-								class="icon-long-arrow-right"></i></a>
+							<a th:href="@{/cart}" class="btn btn-primary">View Cart</a> 
+							<a th:href="@{/checkout}" class="btn btn-outline-primary-2"><span>Checkout</span>
+							<i class="icon-long-arrow-right"></i></a>
 						</div>
 						<!-- End .dropdown-cart-total -->
 					</div>
@@ -296,7 +296,7 @@
 
 						<div class="dropdown-cart-action">
 							<a th:href="@{/cart}" class="btn btn-primary">View Cart</a> 
-							<button href="checkout.html" class="btn btn-primary" disabled><span>Checkout</span><i
+							<button th:href="@{/checkout}" class="btn btn-primary" disabled><span>Checkout</span><i
 								class="icon-long-arrow-right"></i></button>
 						</div>
 						<!-- End .dropdown-cart-total -->

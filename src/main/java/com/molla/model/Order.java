@@ -31,11 +31,11 @@ public class Order{
 	private Account account;
 	private Date createDate;
 	
-	@JsonIgnore
 	@OneToOne
 	@JoinColumn(name = "order_status")
 	private OrderStatus orderStatus;
 	
+	private String fullname;
 	private String address;
 	private String description;
 	private String phoneNumber;

@@ -270,7 +270,7 @@
                                     <div class="row">
                                         <div class="col-6 col-lg-3">
                                             <figure class="product-media">
-                                                <a href="product.html">
+                                                <a th:href="@{|/product/detail/${p.id}|}">
                                                     <img th:src="@{|/assets/images/products/${p.image1}|}" alt="Product image" class="product-image">
                                                 </a>
                                             </figure><!-- End .product-media -->
@@ -293,7 +293,7 @@
                                                     <a href="#" class="btn-product btn-compare" title="Compare"><span>compare</span></a>
                                                 </div><!-- End .product-action -->
 
-                                                <a th:attr="ng-click=@{|cart.add(${p.id})|}" class="btn-product btn-cart"><span>add to cart</span></a>
+                                                <a th:attr="ng-click=@{|cart.add(${p.id})|}" class="btn-product btn-cart" style="cursor: pointer;"><span>add to cart</span></a>
                                             </div><!-- End .product-list-action -->
                                         </div><!-- End .col-sm-6 col-lg-3 -->
 

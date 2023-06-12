@@ -59,13 +59,14 @@ app.controller("shopping-cart-ctrl",function($scope,$http){
 
 	$scope.cart.loadFromSessionStorage();
 
-	/*$scope.order = {
+	$scope.order = {
 		createDate: new Date(),
 		address: "",
-		user: { username: split[2] },
+		account: {username: $("#username").text()},
+		fullname : "",
 		description: "",
 		phoneNumber: "",
-		status: "ChoXacNhan",
+		orderStatus: {id: "ChoXacNhan"},
 		isPaid: 1,
 		get expectedDate() {
 			let date = new Date();
@@ -81,7 +82,7 @@ app.controller("shopping-cart-ctrl",function($scope,$http){
 		get orderDetails() {
 			return $scope.cart.items.map(item => {
 				return {
-					product: { id: item.id },
+					products: { id: item.id },
 					price: item.price * ((100 - item.discount) / 100),
 					quantity: item.qty
 				}
@@ -90,10 +91,10 @@ app.controller("shopping-cart-ctrl",function($scope,$http){
 
 
 		purchase() {
-			if ($scope.order.phoneNumber.match("^(0|84)(2(0[3-9]|1[0-6|8|9]|2[0-2|5-9]|3[2-9]|4[0-9]|5[1|2|4-9]|6[0-3|9]|7[0-7]|8[0-9]|9[0-4|6|7|9])|3[2-9]|5[5|6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])([0-9]{7})$")) {
+			
 				if ($scope.cart.count > 0) {
 					var order = angular.copy(this);
-					$http.post("/api/orders", order).then(resp => {
+					$http.post("/rest/orders", order).then(resp => {
 						alert("Đặt hàng thành công");
 						$scope.cart.clear();
 						returnOrder = resp.data;
@@ -105,10 +106,8 @@ app.controller("shopping-cart-ctrl",function($scope,$http){
 				} else {
 					alert("Bạn chưa có sản phẩm trong giỏ hàng")
 				}
-			} else {
-				document.getElementById("sdt").style.display = "flex";
-			}
+
 		},
 
-	};*/
+	};
 })

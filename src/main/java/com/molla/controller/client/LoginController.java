@@ -11,17 +11,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class LoginController {
 	@RequestMapping("/login")
 	public String loginForm() {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (authentication == null || authentication instanceof AnonymousAuthenticationToken) {
-    		return "client/user/login";
-        }
- 
-        return "redirect:/home";
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		if (authentication == null || authentication instanceof AnonymousAuthenticationToken) {
+			return "client/user/login";
+		}
+		return "redirect:/home";
 	}
-	
+
 	@RequestMapping("/login/error")
 	public String loginError(Model model) {
-		model.addAttribute("error","Sai thông tin đăng nhập !");
+		model.addAttribute("error", "Sai thông tin đăng nhập !");
 		return "client/user/login";
 	}
 
