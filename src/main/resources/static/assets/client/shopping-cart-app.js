@@ -91,7 +91,6 @@ app.controller("shopping-cart-ctrl",function($scope,$http){
 
 
 		purchase() {
-			
 				if ($scope.cart.count > 0) {
 					var order = angular.copy(this);
 					$http.post("/rest/orders", order).then(resp => {

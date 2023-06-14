@@ -243,7 +243,7 @@
             <div class="page-content">
             	<div class="checkout">
 	                <div class="container">
-            			<form action="#">
+            			<form>
 		                	<div class="row">
 		                		<div class="col-lg-9">
 		                			<h2 class="checkout-title">Billing Details</h2><!-- End .checkout-title -->
@@ -301,11 +301,9 @@
 		                						</tr><!-- End .summary-total -->
 		                					</tbody>
 		                				</table><!-- End .table table-summary -->
+		                						          
+		                				<button class="btn btn-outline-primary-2 btn-block" ng-click="order.purchase()">Thanh toán</button>
 		                			
-		                				<button type="submit" class="btn btn-outline-primary-2 btn-order btn-block" ng-click="order.purchase()">
-		                					<span class="btn-text">Place Order</span>
-		                					<span class="btn-hover-text">Proceed to Checkout</span>
-		                				</button>
 		                			</div><!-- End .summary -->
 		                		</aside><!-- End .col-lg-3 -->
 		                	</div><!-- End .row -->

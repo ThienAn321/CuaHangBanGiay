@@ -10,6 +10,14 @@ app.config(function ($routeProvider){
 		templateUrl:" ",
 		controller:"user-ctrl"
 	})
+	.when("/admin/category",{
+		templateUrl:" ",
+		controller:"category-ctrl"
+	})
+	.when("/admin/order",{
+		templateUrl:" ",
+		controller:"order-ctrl"
+	})
 	.when("/authorize",{
 		templateUrl:" ",
 		controller:"authority-ctrl"

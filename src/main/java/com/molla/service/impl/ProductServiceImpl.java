@@ -18,6 +18,11 @@ public class ProductServiceImpl implements ProductService{
 	public List<Product> findAll() {
 		return productRepository.findAll();
 	}
+	
+	@Override
+	public List<Product> findByCategoryId(String cid) {
+		return productRepository.findByCategoryId(cid);
+	}
 
 	@Override
 	public Product findById(Integer id) {
@@ -38,8 +43,6 @@ public class ProductServiceImpl implements ProductService{
 	public void delete(Integer id) {	
 		productRepository.deleteById(id);
 	}
-
-
 	
 	
 }

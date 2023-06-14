@@ -982,7 +982,6 @@
                                             <span class="product-label label-primary">Sale</span>
                                             <span class="product-label label-sale">[[${p.discount}]]% off</span>
                                             <a th:href="@{|/product/detail/${p.id}|}">
-                                                <!-- <img src="assets/images/demos/demo-10/products/product-5.jpg" alt="Product image" class="product-image"> -->
                                                 <img th:src="@{|/assets/images/products/${p.image1}|}" alt="Product image" class="product-image" style="width: 100%; height: 250px; object-fit: cover;">
                                             </a>
 
@@ -1016,14 +1015,8 @@
                                                 <span class="ratings-text">( 4 Reviews )</span>
                                             </div><!-- End .rating-container -->
 
-                                            <div class="product-nav product-nav-dots">
-                                                <a href="#" class="active" style="background: #af5f23;"><span class="sr-only">Color name</span></a>
-                                                <a href="#" style="background: #806f55;"><span class="sr-only">Color name</span></a>
-                                                <a href="#" style="background: #333333;"><span class="sr-only">Color name</span></a>
-                                            </div><!-- End .product-nav -->
-
                                             <div class="product-action">
-                                                <a th:attr="ng-click=@{|cart.add(${p.id})|}" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
+                                                <a th:attr="ng-click=@{|cart.add(${p.id})|}" class="btn-product btn-cart" title="Add to cart" style="cursor: pointer;"><span>add to cart</span></a>
                                                 <a href="popup/quickView.html" class="btn-product btn-quickview" title="Quick view"><span>quick view</span></a>
                                             </div><!-- End .product-action -->
                                         </div><!-- End .product-footer -->

@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 </head>
 <body>
-	<main ng-controller="product-ctrl">
+	<main ng-controller="category-ctrl">
 		<div class="animated fadeIn">
 			<div class="row">
 				<div class="col-md-12">
@@ -19,27 +19,17 @@
 									<tr>
 										<th>ID</th>
 										<th>Tên</th>
-										<th>Danh mục</th>
-										<th>Size</th>
-										<th>Số lượng</th>
-										<th>Giá</th>
-										<th>Discount</th>
-										<th>description</th>
+										<th>Icon</th>
 									</tr>
 								</thead>
 								<tbody>
-									<tr ng-repeat="item in pager.items">
+									<tr ng-repeat="item in category">
 										<td>{{item.id}}</td>
 										<td>{{item.name}}</td>
-										<td>{{item.category.name}}</td>
-										<td>{{item.size}}</td>
-										<td>{{item.stock}}</td>
-										<td>{{item.price | number}} VNĐ</td>
-										<td>{{item.discount}}%</td>
-										<td>{{item.description}}</td>
+										<td>{{item.icon}}</td>
 										<td>
 											<div class="btn-group btn-group-xs">
-												<button ng-click="form.add(item.id)"
+												<button ng-click="formCategory.add(item.id)"
 													class="btn btn-warning glyphicon glyphicon-edit"></button>
 												<button ng-click="delete(item)"
 													class="btn btn-warning glyphicon glyphicon-trash"></button>

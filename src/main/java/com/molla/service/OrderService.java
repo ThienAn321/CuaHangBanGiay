@@ -12,4 +12,6 @@ public interface OrderService {
 	Order findById(Integer id);
 
 	List<Order> findByUsername(String username);
+	
+	Order update(Order order);
 }

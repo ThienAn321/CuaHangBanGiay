@@ -301,7 +301,7 @@
                                             <div class="product-body product-action-inner">
                                                 <a href="#" class="btn-product btn-wishlist" title="Add to wishlist" style="right: -5px;"><span>add to wishlist</span></a>
                                                 <div class="product-cat">
-                                                    <a href="#" th:text="${p.category.name}"></a>
+                                                    <a th:href="@{|/product/list?cid=${p.category.id}|}" th:text="${p.category.name}"></a>
                                                 </div><!-- End .product-cat -->
                                                 <h3 class="product-title"><a th:href="@{|/product/detail/${p.id}|}" th:text="${p.name}"></a></h3><!-- End .product-title -->
 

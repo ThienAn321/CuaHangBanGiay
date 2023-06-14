@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 </head>
 <body>
-	<main ng-controller="product-ctrl">
+	<main ng-controller="order-ctrl">
 		<div class="animated fadeIn">
 			<div class="row">
 				<div class="col-md-12">
@@ -17,34 +17,33 @@
 							<table id="bootstrap-data-table" class="table table-bordered">
 								<thead>
 									<tr>
-										<th>ID</th>
-										<th>Tên</th>
-										<th>Danh mục</th>
-										<th>Size</th>
-										<th>Số lượng</th>
-										<th>Giá</th>
-										<th>Discount</th>
-										<th>description</th>
+										<th>Đơn hàng</th>
+										<th>Tài khoản</th>
+										<th>Người nhận</th>
+										<th>Địa chỉ</th>
+										<th>Số điện thoại</th>
+										<th>Trạng thái</th>
+										<th>Ghi chú</th>
 									</tr>
 								</thead>
 								<tbody>
-									<tr ng-repeat="item in pager.items">
-										<td>{{item.id}}</td>
-										<td>{{item.name}}</td>
-										<td>{{item.category.name}}</td>
-										<td>{{item.size}}</td>
-										<td>{{item.stock}}</td>
-										<td>{{item.price | number}} VNĐ</td>
-										<td>{{item.discount}}%</td>
-										<td>{{item.description}}</td>
-										<td>
-											<div class="btn-group btn-group-xs">
-												<button ng-click="form.add(item.id)"
-													class="btn btn-warning glyphicon glyphicon-edit"></button>
-												<button ng-click="delete(item)"
-													class="btn btn-warning glyphicon glyphicon-trash"></button>
-											</div>
+									<tr ng-repeat="order in orders">
+										<td>{{order.id}}</td>
+										<td>{{order.account.username}}</td>
+										<td>{{order.fullname}}</td>
+										<td>{{order.address}}</td>
+										<td>{{order.phoneNumber}}</td>
+										<td ng-if="order.orderStatus.id != 'HuyBo'">					
+											<select id="inputState" class="form-control" ng-change="updateStatus(order)" ng-model="order.orderStatus.id"> 
+												<option ng-repeat="s in orderStatus" ng-value="s.id">{{s.statusName}}</option>
+											</select>
 										</td>
+										<td ng-if="order.orderStatus.id == 'HuyBo'">					
+											<select id="inputState" class="form-control" ng-change="updateStatus(order)" ng-model="order.orderStatus.id"> 
+												<option ng-repeat="s in orderStatus" ng-value="s.id" disabled>{{s.statusName}}</option>
+											</select>
+										</td>
+										<td>{{order.description}}</td>
 									</tr>
 								</tbody>
 							</table>

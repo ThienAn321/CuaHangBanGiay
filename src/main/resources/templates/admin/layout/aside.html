@@ -16,8 +16,8 @@
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Danh Mục</a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="fa fa-table"></i><a href="#">Thêm Mới</a></li>
-                            <li><i class="fa fa-table"></i><a href="#">Danh Sách</a></li>
+                            <li><i class="fa fa-table"></i><a th:href="@{/admin/category/add}">Thêm Mới</a></li>
+                            <li><i class="fa fa-table"></i><a th:href="@{/admin/category}">Danh Sách</a></li>
                         </ul>
                     </li>
                     <li class="menu-item-has-children dropdown">
@@ -28,7 +28,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="widgets.html"> <i class="menu-icon ti-email"></i>Đơn Hàng </a>
+                        <a th:href="@{/admin/order}"> <i class="menu-icon ti-email"></i>Đơn Hàng </a>
                     </li>
 
                     <li class="menu-title">Thống Kê</li><!-- /.menu-title -->

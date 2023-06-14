@@ -8,6 +8,7 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -31,7 +32,7 @@ public class Order{
 	private Account account;
 	private Date createDate;
 	
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "order_status")
 	private OrderStatus orderStatus;
 	

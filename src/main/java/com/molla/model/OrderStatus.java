@@ -1,11 +1,15 @@
 package com.molla.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -26,7 +30,7 @@ public class OrderStatus{
     private String statusName;
     
 	@JsonIgnore
-	@OneToOne(mappedBy = "orderStatus")
-    private Order order;
+	@OneToMany(mappedBy = "orderStatus")
+    private List<Order> order;
     
 }
