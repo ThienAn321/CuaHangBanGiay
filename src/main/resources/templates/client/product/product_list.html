@@ -246,9 +246,14 @@
                 		<div class="col-lg-9">
                 			<div class="toolbox">
                 				<div class="toolbox-left">
-                					<div class="toolbox-info">
-                						Showing <span>9 of 56</span> Products
-                					</div><!-- End .toolbox-info -->
+                				<form th:action="@{/product/list}">
+                					<div class="header-search-wrapper">
+	                					<div class="header-search-wrapper">
+											<label for="q" class="sr-only">Search</label> 
+											<input type="search" class="form-control" name="keyword" id="keyword" th:value="${keyword}" placeholder="Search in..." required>
+										</div>
+									</div>
+								</form>
                 				</div><!-- End .toolbox-left -->
 
                 				<div class="toolbox-right">
@@ -314,19 +319,37 @@
                                 </div><!-- End .product -->
                             </div><!-- End .products -->
 
-                			<nav aria-label="Page navigation">
+                			<nav aria-label="Page navigation" th:if="${items.totalPages > 1}">
 							    <ul class="pagination">
-							        <li class="page-item disabled">
-							            <a class="page-link page-link-prev" href="#" aria-label="Previous" tabindex="-1" aria-disabled="true">
+							        <li class="page-item disabled"  th:if="${currentPage == 1}">
+							            <a class="page-link page-link-prev" href="#" aria-label="Previous" aria-disabled="true">
 							                <span aria-hidden="true"><i class="icon-long-arrow-left"></i></span>Prev
 							            </a>
 							        </li>
-							        <li class="page-item active" aria-current="page"><a class="page-link" href="#">1</a></li>
-							        <li class="page-item"><a class="page-link" href="#">2</a></li>
-							        <li class="page-item"><a class="page-link" href="#">3</a></li>
-							        <li class="page-item-total">of 6</li>
-							        <li class="page-item">
+							        <li class="page-item" th:if="${currentPage > 1 and cid == null}">
+							            <a class="page-link page-link-prev" th:href="@{'/product/list/' + ${currentPage - 1}}" aria-label="Previous" aria-disabled="true">
+							                <span aria-hidden="true"><i class="icon-long-arrow-left"></i></span>Prev
+							            </a>
+							        </li>
+							        <li class="page-item" th:if="${currentPage > 1 and cid != null}">
+							            <a class="page-link page-link-prev" th:href="@{|/product/list/${currentPage - 1}?cid=${cid}|}" aria-label="Previous" aria-disabled="true">
+							                <span aria-hidden="true"><i class="icon-long-arrow-left"></i></span>Prev
+							            </a>
+							        </li>
+							        <li th:each="i: ${#numbers.sequence(1, totalPages)}" class="page-item"><a class="page-link" th:if="${cid} == null" th:href="@{|/product/list/${i}|}">[[${i}]]</a></li>
+							        <li th:each="i: ${#numbers.sequence(1, totalPages)}" class="page-item"><a class="page-link" th:if="${cid} != null" th:href="@{|/product/list/${i}?cid=${cid}|}">[[${i}]]</a></li>
+							        <li class="page-item disabled" th:if="${currentPage == totalPages}">
 							            <a class="page-link page-link-next" href="#" aria-label="Next">
+							                Next <span aria-hidden="true"><i class="icon-long-arrow-right"></i></span>
+							            </a>
+							        </li>
+							        <li class="page-item" th:if="${currentPage < totalPages and cid == null}">
+							            <a class="page-link page-link-next" th:href="@{'/product/list/' + ${currentPage + 1}}" aria-label="Next">
+							                Next <span aria-hidden="true"><i class="icon-long-arrow-right"></i></span>
+							            </a>
+							        </li>
+							        <li class="page-item" th:if="${currentPage < totalPages and cid != null}">
+							            <a class="page-link page-link-next" th:href="@{|/product/list/${currentPage + 1}?cid=${cid}|}" aria-label="Next">
 							                Next <span aria-hidden="true"><i class="icon-long-arrow-right"></i></span>
 							            </a>
 							        </li>

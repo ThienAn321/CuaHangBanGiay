@@ -87,7 +87,7 @@ public class SecurityConfig{
 		
 		http.securityMatcher("/admin/**")
 			.authorizeHttpRequests()
-			.requestMatchers("/admin/**").hasRole("ADMIN"); // truy cập thoải mái;
+			.requestMatchers("/admin/**").hasAnyRole("ADMIN", "DIRECTOR"); // truy cập thoải mái;
 		
 		http .formLogin()
 	         .loginPage("/loginAdmin")

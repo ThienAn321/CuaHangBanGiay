@@ -225,7 +225,7 @@
         </header><!-- End .header -->
 
         <main class="main">
-        	<div class="page-header text-center" style="background-image: url('assets/images/page-header-bg.jpg')">
+        	<div class="page-header text-center" style="background-image: url('/assets/images/page-header-bg.jpg')">
         		<div class="container">
         			<h1 class="page-title">Giỏ hàng</h1>
         		</div><!-- End .container -->
@@ -240,23 +240,29 @@
 									<tr>
 										<th>Đơn hàng</th>
 										<th>Người nhận</th>
-										<th>Số điện thoại</th>
-										<th>Order Date</th>
-										<th>Shipping Address</th>
+										<th>Ngày đặt</th>
+										<th>Địa chỉ</th>
+										<th>Trạng thái</th>
 										<th>Ghi chú</th>
 										<th></th>
 									</tr>
 								</thead>
 								<tbody>
-									<tr th:each="order, state:${orders}">
-										<td>#[[${order.id}]]</td>
-										<td>[[${order.fullname}]]</td>
-										<td>[[${order.phoneNumber}]]</td>
-										<td>[[${order.createDate}]]</td>
-										<td>[[${order.address}]]</td>
-										<td>[[${order.description}]]</td>
+									<tr ng-repeat="order in ordersClient |  orderBy:'-id'">
+										<td>#{{order.id}}</td>
+										<td>{{order.fullname}}</td>
+										<td>{{order.createDate}}</td>
+										<td>{{order.address}}</td>
+										<td>{{order.orderStatus.statusName}}</td>
+										<td>{{order.description}}</td>
 										<td>
-											<a th:href="@{|/order/detail/${order.id}|}" class="btn btn-outline-primary-2" style="min-width: 0;"> Check</a>										
+											<a th:href="@{|/order/detail/{{order.id}}|}" class="btn btn-outline-primary-2" style="min-width: 0;">Xem chi tiết</a>										
+										</td>
+										<td ng-if="order.orderStatus.id != 'HuyBo'">
+											<button ng-click="updateStatus(order.id)" class="btn btn-outline-primary-2" style="min-width: 0;">Hủy đơn</button>										
+										</td>
+										<td ng-if="order.orderStatus.id == 'HuyBo'">
+											<button class="btn btn-outline-primary-2" style="min-width: 0;" disabled> Hủy đơn</button>										
 										</td>
 									</tr>
 								</tbody>
@@ -287,6 +293,7 @@
     <script th:src="@{/assets/js/nouislider.min.js}"></script>
     <!-- Main JS File -->
     <script th:src="@{/assets/js/main.js}"></script>
+    
 </body>
 
 

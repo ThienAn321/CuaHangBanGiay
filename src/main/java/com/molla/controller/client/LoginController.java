@@ -20,7 +20,7 @@ public class LoginController {
 
 	@RequestMapping("/login/error")
 	public String loginError(Model model) {
-		model.addAttribute("error", "Sai thông tin đăng nhập !");
+		model.addAttribute("error", "Sai thông tin đăng nhập hoặc tài khoản đã bị vô hiệu hóa !");
 		return "client/user/login";
 	}
 

@@ -111,4 +111,9 @@ public class AccountServiceImpl implements AccountService {
 		return accountRepository.findByRoleUser();
 	}
 
+	@Override
+	public Account update(Account account) {
+		return accountRepository.save(account);
+	}
+
 }

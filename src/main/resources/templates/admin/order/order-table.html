@@ -33,14 +33,9 @@
 										<td>{{order.fullname}}</td>
 										<td>{{order.address}}</td>
 										<td>{{order.phoneNumber}}</td>
-										<td ng-if="order.orderStatus.id != 'HuyBo'">					
+										<td>					
 											<select id="inputState" class="form-control" ng-change="updateStatus(order)" ng-model="order.orderStatus.id"> 
 												<option ng-repeat="s in orderStatus" ng-value="s.id">{{s.statusName}}</option>
-											</select>
-										</td>
-										<td ng-if="order.orderStatus.id == 'HuyBo'">					
-											<select id="inputState" class="form-control" ng-change="updateStatus(order)" ng-model="order.orderStatus.id"> 
-												<option ng-repeat="s in orderStatus" ng-value="s.id" disabled>{{s.statusName}}</option>
 											</select>
 										</td>
 										<td>{{order.description}}</td>

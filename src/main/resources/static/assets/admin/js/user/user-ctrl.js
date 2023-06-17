@@ -8,6 +8,26 @@ app.controller("user-ctrl", function($scope, $http) {
 	}
 
 	$scope.initialize();
+	
+	$scope.activeUser = function(item) {
+		$http.put(`/rest/account/active/${item}`).then(resp => {
+				alert("Cập nhật tài khoản thành công");
+				location.reload();
+			}).catch(error => {
+				alert("Lỗi tài khoản hóa đơn");
+				console.log("Error", error);
+			});
+	}
+	
+	$scope.disableUser = function(item) {
+		$http.put(`/rest/account/disable/${item}`).then(resp => {
+				alert("Cập nhật tài khoản thành công");
+				location.reload();
+			}).catch(error => {
+				alert("Lỗi tài khoản hóa đơn");
+				console.log("Error", error);
+			});
+	}
 
 
 	/*$scope.pager = {

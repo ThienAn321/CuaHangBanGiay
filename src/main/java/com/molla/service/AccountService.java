@@ -7,6 +7,8 @@ import com.molla.model.Account;
 public interface AccountService {
 	Account findById(String username);
 	
+	Account update(Account account);
+	
 	Account findByEmail(String email);
 	
 	List<Account> findByRoleUser();

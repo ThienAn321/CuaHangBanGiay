@@ -22,6 +22,7 @@ app.controller("order-ctrl", function($scope, $http) {
 				var index = $scope.orders.findIndex(p => p.id == this.order.id);
 				$scope.orders[index] = this.order;
 				alert("Cập nhật hóa đơn thành công");
+				console.log(resp.data)
 			}).catch(error => {
 				alert("Lỗi cập nhật hóa đơn");
 				console.log("Error", error);

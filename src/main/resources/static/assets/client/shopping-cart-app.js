@@ -1,5 +1,31 @@
 const app = angular.module("shopping-cart-app",[]);
 app.controller("shopping-cart-ctrl",function($scope,$http){
+	$scope.ordersClient = [];
+	$scope.products = [];
+
+	$scope.initialize = function() {
+		$http.get("/rest/orders").then(resp => {
+			$scope.ordersClient = resp.data;
+		});
+		
+		$http.get("/rest/products").then(resp => {
+			$scope.products = resp.data;
+		});
+		
+	}
+
+	$scope.initialize();
+	
+	$scope.updateStatus = function(item) {
+		$http.put(`/rest/orders/cancelOrderClient/${item}`).then(resp => {
+				alert("Cập nhật hóa đơn thành công");
+				location.reload();
+			}).catch(error => {
+				alert("Lỗi cập nhật hóa đơn");
+				console.log("Error", error);
+			});
+	}
+	
 	$scope.cart = {
 		items: [],
 		add(id) {
@@ -58,11 +84,14 @@ app.controller("shopping-cart-ctrl",function($scope,$http){
 	}
 
 	$scope.cart.loadFromSessionStorage();
+	
+	var name = $("#username").text();
+	var split = name.split(" ");
 
 	$scope.order = {
 		createDate: new Date(),
 		address: "",
-		account: {username: $("#username").text()},
+		account: {username: split[2]},
 		fullname : "",
 		description: "",
 		phoneNumber: "",

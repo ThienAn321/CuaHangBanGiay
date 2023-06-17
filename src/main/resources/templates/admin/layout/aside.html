@@ -23,7 +23,7 @@
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Nhân Viên</a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="fa fa-table"></i><a href="#">Thêm Mới</a></li>
+                            <th:block sec:authorize="hasRole('ROLE_DIRECTOR')"><li><i class="fa fa-table"></i><a href="#">Thêm Mới</a></li></th:block>
                             <li><i class="fa fa-table"></i><a th:href="@{/admin/user}">Danh Sách</a></li>
                         </ul>
                     </li>

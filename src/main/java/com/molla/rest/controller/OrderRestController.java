@@ -66,4 +66,21 @@ public class OrderRestController {
 		return orderService.update(order);
 	}
 	
+	@PutMapping("cancelOrderClient/{id}")
+	public Order cancelOrderClient(@PathVariable("id") Integer id) {
+		OrderStatus orderCancel = orderStatusService.getStatus("HuyBo");
+		Order orderInDB = orderService.findById(id);
+		orderInDB.setOrderStatus(orderCancel);
+		
+		List<OrderDetail> orderDetails = orderInDB.getOrderDetails();
+		for (OrderDetail orderDetail : orderDetails) {
+			int productId = orderDetail.getProducts().getId();
+			Product product = productService.findById(productId);
+			int remainStock = product.getStock() + orderDetail.getQuantity();
+            product.setStock(remainStock);
+            productService.update(product);
+		}
+		return orderService.update(orderInDB);
+	}
+	
 }

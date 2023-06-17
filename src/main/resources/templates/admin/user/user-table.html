@@ -22,8 +22,8 @@
 										<th>Email</th>
 										<th>Địa chỉ</th>
 										<th>Số điện thoại</th>
-										<th>Đã xác minh</th>
-										<th>Ngày tạo</th>
+										<th>Trạng thái</th>
+										<th>Hành động</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -43,14 +43,11 @@
 										<td ng-if="user.phone">
 											{{user.phone}}
 										</td>
-										<td>{{user.accountVerified  == true ? 'Yes' : 'No'}}</td>
-										<td>{{user.createDate}}</td>
+										<td>{{user.accountVerified  == true ? 'Hoạt động' : 'Vô hiệu hóa'}}</td>
 										<td>
 											<div class="btn-group btn-group-xs">
-												<button ng-click="form.add(user.username)"
-													class="btn btn-warning glyphicon glyphicon-edit"></button>
-												<button ng-click="delete(item)"
-													class="btn btn-warning glyphicon glyphicon-trash"></button>
+												<button ng-click="activeUser(user.username)">Kích hoạt</button>
+												<button ng-click="disableUser(user.username)">Vô hiệu hóa</button>
 											</div>
 										</td>
 									</tr>

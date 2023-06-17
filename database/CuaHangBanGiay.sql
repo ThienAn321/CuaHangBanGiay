@@ -129,11 +129,13 @@ create table Orders_Detail(
 go
 
 insert into Roles(id, name)
-	values('ADMIN', N'Quản trị viên'),
+	values('DIRECTOR', N'Giám đốc'),
+		  ('ADMIN', N'Quản trị viên'),
 		  ('USER', N'Người dùng')
 	
 insert into Accounts(username, password, email, fullname, address, phone, accountVerified, Activate_Code, Forgot_Password_Code, Avatar, Role_Id, Create_Date)
-	values('admin','$2a$12$9EuRbuiUGcYAoXZhwxF1kOnIbSzr0ESTk3chnCcXFiH/mwXag3.Oe','',N'Admin',null,null, 1, null, null,'avatar1.png', 'ADMIN', null),
+	values('director','$2a$12$.wLZ0l..lYWEsHpVL1skVO044449/.u0KGdcKgmoR.yJWwz4H.6AS','',N'Director',null,null, 1, null, null,'avatar1.png', 'DIRECTOR', null),
+		  ('admin','$2a$12$9EuRbuiUGcYAoXZhwxF1kOnIbSzr0ESTk3chnCcXFiH/mwXag3.Oe','',N'Admin',null,null, 1, null, null,'avatar1.png', 'ADMIN', null),
 		  ('thienan903','$2a$12$Yj44EdwxoCkuKkgCwoh5sufE444pZ5nlU3NPMMaY3BGp7bdLJ.YWC','thienandeptrai@gmail.com',N'Trịnh Hữu Thiện Ân',null,null, 1,'0123456789','0123456789','avatar1.png', 'ADMIN', null),
 		  ('taipc','$2a$12$52w.qYtEmJIF9x28vEa/futvwTw3UOOPhCw2KAAxv9cNLk1h911w6','tai123456@gmail.com',N'Ngô Ngọc Tài',null,null, 1,'0123456789','0123456789','avatar1.png', 'ADMIN', null),
 		  ('user1','$2a$12$paEAY3DXEYGSyEKvvNEN9eqXGC38wSnszMCCU.KohStqdi4U0z7vy','user_test@gmail.com',N'User Test 1',null,null, 1,'0123456789','0123456789','avatar1.png', 'USER', null),
