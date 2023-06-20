@@ -14,6 +14,21 @@
 							<strong class="card-title">Data Table</strong>
 						</div>
 						<div class="card-body">
+							<div style="display : inline-block">
+								Search : <input type="text" placeholder="Tìm kiếm" ng-model="searchText"/>
+							</div>
+							<div style="display : inline-block">
+									Sort by :
+									<select ng-model="sortColumn">
+										<option value="+id">ID</option>
+										<option value="+account.fullname">Tên A->Z</option>
+										<option value="-account.fullname">Tên Z->A</option>
+										<option value="+address">Địa chỉ A->Z</option>
+										<option value="-address">Địa chỉ Z->A</option>
+										<option value="-stock">Số lượng cao -> thấp</option>
+										<option value="+phoneNumber">Điện thoại</option>
+									</select>
+								</div>
 							<table id="bootstrap-data-table" class="table table-bordered">
 								<thead>
 									<tr>
@@ -27,7 +42,7 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr ng-repeat="order in orders">
+									<tr ng-repeat="order in orders | filter: searchText | orderBy:sortColumn | startFrom: currentPage*pageSize | limitTo: pageSize">
 										<td>{{order.id}}</td>
 										<td>{{order.account.username}}</td>
 										<td>{{order.fullname}}</td>
@@ -44,15 +59,14 @@
 							</table>
 						</div>
 						<div class="panel-footer text-center">
-							<button ng-click="pager.first()" class="btn btn-danger">
+							<button ng-click="pagination()" class="btn btn-danger">
 								First</button>
-							<button ng-click="pager.prev()" class="btn btn-primary">
+							<button ng-disabled="currentPage == 0" ng-click="currentPage=currentPage - 1" class="btn btn-primary">
 								Previous</button>
-							<button class="btn btn-success">{{pager.page + 1}} of
-								{{pager.count}}</button>
-							<button ng-click="pager.next()" class="btn btn-primary">
+							<button class="btn btn-success">{{currentPage + 1}}/{{numberOfPages()}}</button>
+							<button ng-disabled="currentPage >= orders.length/pageSize - 1" ng-click="currentPage=currentPage+1" class="btn btn-primary">
 								Next</button>
-							<button ng-click="pager.last()" class="btn btn-danger">
+							<button ng-click = "currentPage = numberOfPages() - 1" class="btn btn-danger">
 								Last</button>
 						</div>
 					</div>

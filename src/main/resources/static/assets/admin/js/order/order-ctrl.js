@@ -6,18 +6,18 @@ app.controller("order-ctrl", function($scope, $http) {
 		$http.get("/rest/orders").then(resp => {
 			$scope.orders = resp.data;
 		});
-		
+
 		$http.get("/rest/orderStatus").then(resp => {
 			$scope.orderStatus = resp.data;
 		});
 	}
 
 	$scope.initialize();
-	
+
 	$scope.updateStatus = function(item) {
 		$scope.order = angular.copy(item);
 		console.log(this.order.orderStatus.id);
-		if(this.order.orderStatus.id == 'HuyBo') {
+		if (this.order.orderStatus.id == 'HuyBo') {
 			$http.put(`/rest/orders/cancelOrder/${this.order.id}`, this.order).then(resp => {
 				var index = $scope.orders.findIndex(p => p.id == this.order.id);
 				$scope.orders[index] = this.order;
@@ -38,36 +38,31 @@ app.controller("order-ctrl", function($scope, $http) {
 			});
 		}
 	}
+	
+	$scope.sortColumn = "-id";
+	
+	$scope.currentPage = 0;
+	$scope.pageSize = "10";
 
-
-	$scope.pager = {
-		page: 0,
-		size: 10,
-		get items() {
-			var start = this.page * this.size;
-			return $scope.orders.slice(start, start + this.size);
-		},
-		get count() {
-			return Math.ceil(1.0 * $scope.orders.length / this.size);
-		},
-		first() {
-			this.page = 0;
-		},
-		prev() {
-			this.page--;
-			if (this.page < 0) {
-				this.last();
-			}
-		},
-		next() {
-			this.page++;
-			if (this.page >= this.count) {
-				this.first();
-			}
-		},
-		last() {
-			this.page = this.count - 1;
-		}
+	$scope.totalQuantity = function() {
+		return $scope.orders.length;
 	}
 
+	$scope.numberOfPages = function() {
+		return Math.ceil($scope.orders.length / $scope.pageSize);
+	}
+	for (let i = 0; i < 45; i++) {
+		$scope.orders.push("Item " + i);
+	}
+
+	$scope.pagination = function() {
+		$scope.currentPage = 0;
+	}
+});
+
+app.filter('startFrom', function() {
+	return function(input, start) {
+		start = +start;
+		return input.slice(start);
+	}
 });

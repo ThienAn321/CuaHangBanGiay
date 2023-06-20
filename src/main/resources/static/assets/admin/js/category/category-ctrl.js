@@ -10,8 +10,6 @@ app.controller("category-ctrl", function($scope, $http) {
 
 	$scope.initialize();
 
-
-
 	$scope.formCategory = {
 		items: [],
 		add(id) {
@@ -103,37 +101,30 @@ app.controller("category-ctrl", function($scope, $http) {
 		});
 	}
 
+	$scope.sortColumn = "-id";
+	
+	$scope.currentPage = 0;
+	$scope.pageSize = "10";
 
-
-
-	$scope.pager = {
-		page: 0,
-		size: 10,
-		get items() {
-			var start = this.page * this.size;
-			return $scope.category.slice(start, start + this.size);
-		},
-		get count() {
-			return Math.ceil(1.0 * $scope.category.length / this.size);
-		},
-		first() {
-			this.page = 0;
-		},
-		prev() {
-			this.page--;
-			if (this.page < 0) {
-				this.last();
-			}
-		},
-		next() {
-			this.page++;
-			if (this.page >= this.count) {
-				this.first();
-			}
-		},
-		last() {
-			this.page = this.count - 1;
-		}
+	$scope.totalQuantity = function() {
+		return $scope.category.length;
 	}
 
+	$scope.numberOfPages = function() {
+		return Math.ceil($scope.category.length / $scope.pageSize);
+	}
+	for (let i = 0; i < 45; i++) {
+		$scope.category.push("Item " + i);
+	}
+
+	$scope.pagination = function() {
+		$scope.currentPage = 0;
+	}
+});
+
+app.filter('startFrom', function() {
+	return function(input, start) {
+		start = +start;
+		return input.slice(start);
+	}
 });
